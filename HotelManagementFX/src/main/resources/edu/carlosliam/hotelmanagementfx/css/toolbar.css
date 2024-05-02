@@ -1,3 +1,5 @@
+/* Styles for the HMToolBar component */
+
 .tool-bar {
     -fx-background-color: #F6DFCF;
 }
@@ -6,13 +8,20 @@
     -fx-background-color: transparent;
 }
 
+/* Styles for the navigation buttons */
+
 #navigation-buttons .button:hover {
-    -fx-text-fill: #367df7;
+    -fx-background-color: #FFCAA3;
+    -fx-background-radius: 15px;
 }
 
-#navigation-buttons .button:hover .ikonli-font-icon {
-    -fx-icon-color: #367df7;
+/* The class .active will be added and removed depending on the current tab */
+#navigation-buttons .button.active {
+    -fx-background-color: #FFCAA3;
+    -fx-background-radius: 15px;
 }
+
+/* Styles for the buttons that control the window */
 
 #window-buttons .button {
     -fx-background-radius: 10px;
