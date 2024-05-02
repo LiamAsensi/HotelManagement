@@ -1,0 +1,36 @@
+/* CSS para JavaFX */
+#mainBox {
+    -fx-background-color: #FFF5E6;
+    -fx-padding: 0;
+}
+
+.bar-navigation  {
+    -fx-background-color: #F6DFCF;
+    -fx-padding: 0 10;
+}
+
+.btn-bar-navigation {
+    -fx-background-color: #F6DFCF;
+    -fx-text-fill: #000000;
+    -fx-font-size: 14;
+    -fx-background-radius: 50;
+}
+
+.btn-task {
+    -fx-background-color: #FFF5E6;
+}
+
+.btn-bar-navigation:hover {
+    -fx-background-color: #FFF5E6;
+    -fx-cursor: hand;
+}
+
+.tlt-pane {
+    -fx-text-fill: #000000;
+    -fx-font-size: 30;
+    -fx-padding: 10 10;
+}
+
+#main-pane {
+    -fx-padding: 10 10;
+}
