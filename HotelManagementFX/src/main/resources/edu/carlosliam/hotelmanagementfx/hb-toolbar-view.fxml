@@ -7,12 +7,10 @@
 <?import javafx.scene.layout.Region?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<!-- An external library to easily add icons -->
 <!-- Extends from ToolBar -->
-
 <fx:root stylesheets="@css/toolbar.css" type="javafx.scene.control.ToolBar" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <!-- The main container of the toolbar -->
-    <HBox prefHeight="30.0" HBox.hgrow="ALWAYS">
+    <HBox fx:id="hbMain" prefHeight="30.0" HBox.hgrow="ALWAYS">
 
         <!-- Container of the navigation buttons -->
         <HBox id="navigation-buttons" alignment="CENTER_LEFT" spacing="10.0">

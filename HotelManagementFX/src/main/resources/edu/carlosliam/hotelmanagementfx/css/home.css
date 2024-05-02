@@ -1,0 +1,17 @@
+#control-buttons .button, #main-container .button {
+    -fx-background-color: #F6DFCF;
+    -fx-background-radius: 35px;
+    -fx-border-color: #B0B0B0;
+    -fx-border-radius: 35px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 1, 0.3, 0.0, 2.0);
+    -fx-cursor: hand;
+}
+
+#control-buttons .button:hover, #main-container .button:hover {
+    -fx-background-color: #F0C4A5;
+}
+
+#control-buttons .button .ikonli-font-icon {
+    -fx-icon-color: #404040;
+}
