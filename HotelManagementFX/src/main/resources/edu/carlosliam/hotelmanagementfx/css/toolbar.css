@@ -1,0 +1,43 @@
+.tool-bar {
+    -fx-background-color: #F6DFCF;
+}
+
+.tool-bar .button {
+    -fx-background-color: transparent;
+}
+
+#navigation-buttons .button:hover {
+    -fx-text-fill: #367df7;
+}
+
+#navigation-buttons .button:hover .ikonli-font-icon {
+    -fx-icon-color: #367df7;
+}
+
+#window-buttons .button {
+    -fx-background-radius: 10px;
+}
+
+#window-buttons .button:hover {
+    -fx-background-color: #FFF6E8;
+}
+
+#minimize .ikonli-font-icon {
+    -fx-icon-color: #58D264;
+}
+
+#maximize .ikonli-font-icon {
+    -fx-icon-color: #FFC225;
+}
+
+#close .ikonli-font-icon {
+    -fx-icon-color: #D25858;
+}
+
+#window-buttons #close:hover {
+    -fx-background-color: #D25858;
+}
+
+#window-buttons #close:hover .ikonli-font-icon {
+    -fx-icon-color: #FFF6E8;
+}
