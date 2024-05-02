@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<!-- An external library to easily add icons -->
+<!-- Extends from ToolBar -->
+
+<fx:root stylesheets="@css/toolbar.css" type="javafx.scene.control.ToolBar" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <!-- The main container of the toolbar -->
+    <HBox prefHeight="30.0" HBox.hgrow="ALWAYS">
+
+        <!-- Container of the navigation buttons -->
+        <HBox id="navigation-buttons" alignment="CENTER_LEFT" spacing="10.0">
+            <Button fx:id="btnGoToHome" graphicTextGap="0.0" mnemonicParsing="false">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2h-home" iconSize="20" />
+                </graphic>
+            </Button>
+            <Button fx:id="btnGoToAssignments" mnemonicParsing="false" text="Assignments" />
+            <Button fx:id="btnGoToEmployees" mnemonicParsing="false" text="Employees" />
+            <Button fx:id="btnGoToTasks" mnemonicParsing="false" text="Tasks" />
+         <HBox.margin>
+            <Insets right="20.0" />
+         </HBox.margin>
+        </HBox>
+
+        <!-- Region to simulate a 'justify-content: space-between' from CSS -->
+        <Region HBox.hgrow="ALWAYS" />
+
+        <!-- Container of the buttons to close, minimize and maximize the window -->
+        <HBox id="window-buttons" alignment="CENTER_RIGHT" spacing="5.0" HBox.hgrow="NEVER">
+            <Button id="minimize" fx:id="btnMinimizeWindow" mnemonicParsing="false">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2w-window-minimize" iconSize="20" />
+                </graphic>
+            </Button>
+            <Button id="maximize" fx:id="btnMaximizeWindow" mnemonicParsing="false">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2w-window-maximize" iconSize="20" />
+                </graphic>
+            </Button>
+            <Button id="close" fx:id="btnCloseWindow" mnemonicParsing="false">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2w-window-close" iconSize="20" />
+                </graphic>
+            </Button>
+        </HBox>
+    </HBox>
+</fx:root>
