@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import edu.carlosliam.hotelmanagementfx.controller.HMToolBar?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.AssignmentManagerController">
+    <top>
+        <HMToolBar fx:id="toolbar" BorderPane.alignment="CENTER"/>
+    </top>
+</BorderPane>
