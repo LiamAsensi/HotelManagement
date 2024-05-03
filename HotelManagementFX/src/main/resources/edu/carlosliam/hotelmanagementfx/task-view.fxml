@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import edu.carlosliam.hotelmanagementfx.controller.HMToolBar?>
 <VBox id="mainBox" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1080.0" spacing="20.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.HelloController">
+    <HMToolBar fx:id="toolbar"/>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" styleClass="bar-navigation" stylesheets="@style.css">
-      <buttons>
-          <Button mnemonicParsing="false" stylesheets="@style.css" text="Tasks">
-            <styleClass>
-               <String fx:value="btn-bar-navigation" />
-               <String fx:value="btn-task" />
-            </styleClass></Button>
-          <Button mnemonicParsing="false" styleClass="btn-bar-navigation" stylesheets="@style.css" text="Employees" />
-          <Button mnemonicParsing="false" styleClass="btn-bar-navigation" stylesheets="@style.css" text="Assignments" />
-          <Button mnemonicParsing="false" styleClass="btn-bar-navigation" stylesheets="@style.css" text="Home" />
-      </buttons>
-    </ButtonBar>
-    <Pane id="main-pane" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
-      <children>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="tlt-pane" text="Tasks Manager" />
-      </children></Pane>
+    <Pane id="main-pane" prefHeight="661.0" prefWidth="1080.0" stylesheets="@style.css">
+        <Text layoutX="37.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="tlt-pane"
+              text="Tasks Manager"/>
+        <ListView layoutX="37.0" layoutY="210.0" prefHeight="413.0" prefWidth="723.0" styleClass="list-panel"
+                  stylesheets="@style.css" fx:id="lsTasks"/>
+        <Button layoutX="837.0" layoutY="210.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="162.0"
+                styleClass="btn-general" stylesheets="@style.css" text="Delete Task"/>
+        <Button layoutX="837.0" layoutY="323.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="162.0"
+                styleClass="btn-general" stylesheets="@style.css" text="EditTask"/>
+        <Text layoutX="37.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="tlt-pane" text="Tasks"/>
+    </Pane>
 </VBox>

@@ -34,3 +34,16 @@
 #main-pane {
     -fx-padding: 10 10;
 }
+
+.btn-general {
+    -fx-background-color: #F6DFCF;
+    -fx-text-fill: #000000;
+    -fx-font-size: 14;
+    -fx-background-radius: 10;
+}
+
+.list-panel {
+    -fx-background-color: #F6DFCF;
+    -fx-padding: 10 10;
+    -fx-background-radius: 20;
+}
