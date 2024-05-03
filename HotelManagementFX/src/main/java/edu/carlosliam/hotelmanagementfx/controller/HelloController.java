@@ -22,17 +22,20 @@ public class HelloController {
     public void initialize() {
         HMToolBar.disableButton(toolbar.btnGoToAssignments);
 
+        System.out.println("Get tasks");
         getTasks();
+        System.out.println("Get tasks 2");
     }
 
     private void getTasks() {
-        String url = ServiceUtils.SERVER + "/limpiezas";
+        String url = ServiceUtils.SERVER + "/tasks";
         ServiceUtils.getResponseAsync(url, null, "GET")
                 .thenApply(json -> gson.fromJson(json, TaskListResponse.class))
                 .thenAccept(response -> {
                     if (!response.isError()) {
                         Platform.runLater(() -> {
-                            lsTasks.getItems().setAll(response.getTasks());
+                            //lsTasks.getItems().setAll(response.getTasks());
+                            response.getTasks().forEach(System.out::println);
                         });
                     } else {
                         MessageUtils.showError("Error", response.getErrorMessage());

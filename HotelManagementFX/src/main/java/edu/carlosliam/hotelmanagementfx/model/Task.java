@@ -6,28 +6,28 @@ import java.time.format.DateTimeFormatter;
 
 public class Task {
 
-    @SerializedName("_code")
+    @SerializedName("code")
     private String codTask;
 
-    @SerializedName("_description")
+    @SerializedName("description")
     private String description;
     private String status;
 
-    @SerializedName("_category")
+    @SerializedName("category")
     private String type;
 
-    @SerializedName("_start_date")
+    @SerializedName("start_date")
     private DateTimeFormatter dateStart;
 
-    @SerializedName("_end_date")
+    @SerializedName("end_date")
     private DateTimeFormatter dateEnd;
 
-    @SerializedName("_employee_id")
+    @SerializedName("employee_id")
     private String employeeId;
 
     private int priority;
 
-    @SerializedName("_time")
+    @SerializedName("time")
     private int estimatedTime;
 
     private Employee employee;
