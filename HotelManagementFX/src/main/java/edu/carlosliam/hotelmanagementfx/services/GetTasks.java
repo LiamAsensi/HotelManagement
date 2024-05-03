@@ -20,9 +20,10 @@ public class GetTasks extends Service<TaskListResponse> {
             @Override
             protected TaskListResponse call() throws Exception {
                 String json = ServiceUtils.getResponse(
-                        ServiceUtils.SERVER + "/limpiezas" + filter, null, "GET");
+                        ServiceUtils.SERVER + "/tasks" + filter, null, "GET");
                 Gson gson = new Gson();
                 TaskListResponse response = gson.fromJson(json, TaskListResponse.class);
+
                 return response;
             }
         };
