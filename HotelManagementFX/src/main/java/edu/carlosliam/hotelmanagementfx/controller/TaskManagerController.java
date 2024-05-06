@@ -7,11 +7,9 @@ import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ServiceUtils;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-public class HelloController {
+public class TaskManagerController {
     public HMToolBar toolbar;
 
     @FXML
@@ -20,7 +18,7 @@ public class HelloController {
     private final Gson gson = new Gson();
 
     public void initialize() {
-        HMToolBar.disableButton(toolbar.btnGoToAssignments);
+        HMToolBar.disableButton(toolbar.btnGoToTasks);
 
         System.out.println("Get tasks");
         getTasks();

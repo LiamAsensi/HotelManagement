@@ -1,4 +1,4 @@
-package edu.carlosliam.hotelmanagementfx.services;
+package edu.carlosliam.hotelmanagementfx.data;
 
 import com.google.gson.Gson;
 import edu.carlosliam.hotelmanagementfx.model.TaskListResponse;
