@@ -8,20 +8,20 @@
 <?import javafx.scene.text.Text?>
 
 <?import edu.carlosliam.hotelmanagementfx.controller.HMToolBar?>
-<VBox id="mainBox" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1080.0" spacing="20.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.HelloController">
+<VBox id="mainBox" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1080.0" spacing="20.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.TaskManagerController">
     <HMToolBar fx:id="toolbar"/>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <Pane id="main-pane" prefHeight="661.0" prefWidth="1080.0" stylesheets="@style.css">
+    <Pane id="main-pane" prefHeight="661.0" prefWidth="1080.0" stylesheets="@../css/style.css">
         <Text layoutX="37.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="tlt-pane"
               text="Tasks Manager"/>
         <ListView layoutX="37.0" layoutY="210.0" prefHeight="413.0" prefWidth="723.0" styleClass="list-panel"
-                  stylesheets="@style.css" fx:id="lsTasks"/>
+                  stylesheets="@../css/style.css" fx:id="lsTasks"/>
         <Button layoutX="837.0" layoutY="210.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="162.0"
-                styleClass="btn-general" stylesheets="@style.css" text="Delete Task"/>
+                styleClass="btn-general" stylesheets="@../css/style.css" text="Delete Task"/>
         <Button layoutX="837.0" layoutY="323.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="162.0"
-                styleClass="btn-general" stylesheets="@style.css" text="EditTask"/>
+                styleClass="btn-general" stylesheets="@../css/style.css" text="EditTask"/>
         <Text layoutX="37.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="tlt-pane" text="Tasks"/>
     </Pane>
 </VBox>
