@@ -8,7 +8,7 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <!-- Extends from ToolBar -->
-<fx:root stylesheets="@css/toolbar.css" type="javafx.scene.control.ToolBar" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root stylesheets="@../css/toolbar.css" type="javafx.scene.control.ToolBar" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <!-- The main container of the toolbar -->
     <HBox fx:id="hbMain" prefHeight="30.0" HBox.hgrow="ALWAYS">
 

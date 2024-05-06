@@ -1,0 +1,7 @@
+#main-container {
+    -fx-background-color: #FFF5E6;
+    -fx-background-radius: 20px;
+    -fx-border-color: #B0B0B0;
+    -fx-border-radius: 20px;
+    -fx-border-width: 2px;
+}

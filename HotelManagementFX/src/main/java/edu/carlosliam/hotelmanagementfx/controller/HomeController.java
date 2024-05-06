@@ -12,17 +12,17 @@ import java.io.IOException;
 public class HomeController {
     @FXML
     void goToAssignments() throws IOException {
-        changeScene("assignment-manager-view.fxml");
+        changeScene("layout/assignment-manager-view.fxml");
     }
 
     @FXML
     void goToEmployees() throws IOException {
-        changeScene("employee-manager-view.fxml");
+        changeScene("layout/employee-manager-view.fxml");
     }
 
     @FXML
     void goToTasks() throws IOException {
-        changeScene("task-view.fxml");
+        changeScene("layout/task-manager-view.fxml");
     }
 
     @FXML

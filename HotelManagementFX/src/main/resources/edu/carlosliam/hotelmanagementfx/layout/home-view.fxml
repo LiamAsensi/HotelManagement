@@ -11,7 +11,7 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1100.0" spacing="40.0" style="-fx-background-color: FFF5E6;" stylesheets="@css/home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.HomeController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1080.0" prefHeight="720" spacing="40.0" style="-fx-background-color: FFF5E6;" stylesheets="@../css/home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.HomeController">
    <children>
       <Label text="HOTEL MANAGEMENT" textFill="#404040">
          <font>
@@ -26,7 +26,7 @@
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/Assignments.png" />
+                              <Image url="@../images/Assignments.png" />
                            </image>
                         </ImageView>
                         <Label text="ASSIGNMENTS" VBox.vgrow="ALWAYS">
@@ -47,7 +47,7 @@
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/Employees.png" />
+                              <Image url="@../images/Employees.png" />
                            </image>
                         </ImageView>
                         <Label text="EMPLOYEES" VBox.vgrow="ALWAYS">
@@ -68,7 +68,7 @@
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/Tasks.png" />
+                              <Image url="@../images/Tasks.png" />
                            </image>
                         </ImageView>
                         <Label text="TASKS" VBox.vgrow="ALWAYS">

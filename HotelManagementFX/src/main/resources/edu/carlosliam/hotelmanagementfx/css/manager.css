@@ -1,0 +1,107 @@
+#context-buttons .button {
+    -fx-background-color: #F6DFCF;
+    -fx-background-radius: 20px;
+    -fx-border-color: #B0B0B0;
+    -fx-border-radius: 20px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 1, 0.3, 0.0, 2.0);
+    -fx-cursor: hand;
+}
+
+#context-buttons .button:hover {
+    -fx-background-color: #F0C4A5;
+}
+
+.button .label {
+    -fx-text-fill: #404040;
+}
+
+.button .ikonli-font-icon {
+    -fx-icon-color: #404040;
+}
+
+#fire-button .label {
+    -fx-text-fill: #BF2222;
+}
+
+#fire-button .ikonli-font-icon {
+    -fx-icon-color: #BF2222;
+}
+
+#context-buttons #fire-button:hover {
+    -fx-background-color: #BF2222;
+    -fx-border-color: #8A1313;
+}
+
+#context-buttons #fire-button:hover .label {
+    -fx-text-fill: #FFF5E6;
+}
+
+#context-buttons #fire-button:hover .ikonli-font-icon {
+    -fx-icon-color: #FFF5E6;
+}
+
+.button.transparent {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.button.transparent:hover .ikonli-font-icon {
+    -fx-icon-color: #000000;
+}
+
+.list-view, .choice-box {
+    -fx-background-color: #F6DFCF;
+    -fx-background-radius: 10px;
+    -fx-border-color: #B0B0B0;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 1, 0.3, 0.0, 2.0);
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+}
+
+.list-cell:hover #main-container {
+    -fx-background-color: #faeedc;
+}
+
+.list-cell:selected #main-container {
+    -fx-background-color: #F0C4A5;
+}
+
+.list-cell:selected .label {
+    -fx-text-fill: #404040;
+}
+
+.list-view .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar .thumb {
+    -fx-background-color: #B7B7B7;
+    -fx-background-radius: 20px;
+}
+
+.list-view .scroll-bar .track {
+    -fx-background-color: #FFF5E6;
+    -fx-background-radius: 20px;
+    -fx-border-color: #B0B0B0;
+    -fx-border-radius: 20px;
+}
+
+.list-view .scroll-bar .increment-button,
+.list-view .scroll-bar .decrement-button {
+    -fx-scale-x: 0;
+}
+
+.list-view .scroll-bar:horizontal {
+    -fx-scale-x: 0;
+    -fx-padding: -10;
+    -fx-opacity: 0;
+}
+
+.list-view .scroll-bar:vertical {
+    -fx-padding: 0 7 0 0;
+}

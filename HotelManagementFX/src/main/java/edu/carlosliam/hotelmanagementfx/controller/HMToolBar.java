@@ -4,12 +4,14 @@ import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
+import javafx.stage.Screen;
 
 import java.io.IOException;
 
@@ -41,7 +43,7 @@ public class HMToolBar extends ToolBar {
 
     public HMToolBar() {
         FXMLLoader fxmlLoader = new FXMLLoader(
-                HotelManagementApplication.class.getResource("hb-toolbar-view.fxml"));
+                HotelManagementApplication.class.getResource("layout/hb-toolbar-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -80,7 +82,7 @@ public class HMToolBar extends ToolBar {
         btnGoToEmployees.setOnMouseClicked(event ->
         {
             try {
-                changeScene("employee-manager-view.fxml");
+                changeScene("layout/employee-manager-view.fxml");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -88,7 +90,7 @@ public class HMToolBar extends ToolBar {
 
         btnGoToTasks.setOnMouseClicked(event -> {
             try {
-                changeScene("task-view.fxml");
+                changeScene("layout/task-manager-view.fxml");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -96,7 +98,7 @@ public class HMToolBar extends ToolBar {
 
         btnGoToAssignments.setOnMouseClicked(event -> {
             try {
-                changeScene("assignment-manager-view.fxml");
+                changeScene("layout/assignment-manager-view.fxml");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -104,7 +106,7 @@ public class HMToolBar extends ToolBar {
 
         btnGoToHome.setOnMouseClicked(event -> {
             try {
-                changeScene("home-view.fxml");
+                changeScene("layout/home-view.fxml");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

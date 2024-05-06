@@ -9,6 +9,12 @@ module edu.carlosliam.hotelmanagementfx {
 
     opens edu.carlosliam.hotelmanagementfx to javafx.fxml;
     exports edu.carlosliam.hotelmanagementfx;
+
     exports edu.carlosliam.hotelmanagementfx.controller;
     opens edu.carlosliam.hotelmanagementfx.controller to javafx.fxml;
+
+    opens edu.carlosliam.hotelmanagementfx.adapter to javafx.fxml;
+    exports edu.carlosliam.hotelmanagementfx.adapter;
+
+    exports edu.carlosliam.hotelmanagementfx.model;
 }
