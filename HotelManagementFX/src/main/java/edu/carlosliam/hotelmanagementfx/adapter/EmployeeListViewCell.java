@@ -1,15 +1,13 @@
 package edu.carlosliam.hotelmanagementfx.adapter;
 
 import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
-import edu.carlosliam.hotelmanagementfx.model.Employee;
+import edu.carlosliam.hotelmanagementfx.model.data.Employee;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
-import javafx.util.Callback;
 
 import java.io.IOException;
 

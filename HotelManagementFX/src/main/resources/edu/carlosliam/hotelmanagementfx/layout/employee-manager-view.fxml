@@ -31,7 +31,7 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" styleClass="transparent">
+                  <Button mnemonicParsing="false" styleClass="transparent" onAction="#addEmployee">
                      <graphic>
                         <FontIcon iconLiteral="mdi2p-plus-box" iconSize="32" />
                      </graphic>
