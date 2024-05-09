@@ -1,11 +1,9 @@
 package edu.carlosliam.hotelmanagementfx.controller;
 
-import com.google.gson.Gson;
+import edu.carlosliam.hotelmanagementfx.data.GetTasks;
 import edu.carlosliam.hotelmanagementfx.model.Task;
-import edu.carlosliam.hotelmanagementfx.model.TaskListResponse;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
-import edu.carlosliam.hotelmanagementfx.utils.ServiceUtils;
-import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
@@ -15,33 +13,25 @@ public class TaskManagerController {
     @FXML
     private ListView<Task> lsTasks;
 
-    private final Gson gson = new Gson();
+    private GetTasks getTasks;
 
     public void initialize() {
         HMToolBar.disableButton(toolbar.btnGoToTasks);
 
-        System.out.println("Get tasks");
-        getTasks();
-        System.out.println("Get tasks 2");
-    }
+        getTasks = new GetTasks();
+        getTasks.start();
 
-    private void getTasks() {
-        String url = ServiceUtils.SERVER + "/tasks";
-        ServiceUtils.getResponseAsync(url, null, "GET")
-                .thenApply(json -> gson.fromJson(json, TaskListResponse.class))
-                .thenAccept(response -> {
-                    if (!response.isError()) {
-                        Platform.runLater(() -> {
-                            //lsTasks.getItems().setAll(response.getTasks());
-                            response.getTasks().forEach(System.out::println);
-                        });
-                    } else {
-                        MessageUtils.showError("Error", response.getErrorMessage());
-                    }
-                })
-                .exceptionally(e -> {
-                    MessageUtils.showError("Error", e.getMessage());
-                    return null;
-                });
+        getTasks.setOnSucceeded(e -> {
+            if (!getTasks.getValue().isError()) {
+                System.out.println(getTasks.getValue().getResult());
+                lsTasks.setItems(FXCollections.observableArrayList(getTasks.getValue().getResult()));
+            } else {
+                MessageUtils.showError("Error getting tasks", getTasks.getValue().getErrorMessage());
+            }
+        });
+
+        getTasks.setOnFailed(e -> {
+            MessageUtils.showError("Error", "Error connecting to the server");
+        });
     }
 }

@@ -3,9 +3,9 @@ package edu.carlosliam.hotelmanagementfx.model;
 import java.util.List;
 
 public class TaskListResponse extends BaseResponse{
-    List<Task> result;
+    public List<Task> result;
 
-    public List<Task> getTasks() {
+    public List<Task> getResult() {
         return result;
     }
 }
