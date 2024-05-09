@@ -1,13 +1,13 @@
 package edu.carlosliam.hotelmanagementfx.model;
 
 public class Employee {
-    private String id;
-    private String dni;
-    private String name;
-    private String surnames;
-    private String profession;
-    private String password;
-    private String email;
+    public String id;
+    public String dni;
+    public String name;
+    public String surnames;
+    public String profession;
+    public String password;
+    public String email;
 
     public Employee(String id, String dni, String name, String surnames, String profession, String password, String email) {
         this.id = id;
