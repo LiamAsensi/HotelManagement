@@ -1,13 +1,21 @@
-package edu.carlosliam.hotelmanagementfx.model;
+package edu.carlosliam.hotelmanagementfx.model.data;
+
+import com.google.gson.annotations.SerializedName;
 
 public class Employee {
-    public String id;
-    public String dni;
-    public String name;
-    public String surnames;
-    public String profession;
-    public String password;
-    public String email;
+    @SerializedName("idTrabajador")
+    private String id;
+    @SerializedName("dni")
+    private String dni;
+    @SerializedName("nombre")
+    private String name;
+    @SerializedName("apellidos")
+    private String surnames;
+    @SerializedName("especialidad")
+    private String profession;
+    @SerializedName("contraseña")
+    private String password;
+    private String email;
 
     public Employee(String id, String dni, String name, String surnames, String profession, String password, String email) {
         this.id = id;

@@ -1,8 +1,7 @@
 package edu.carlosliam.hotelmanagementfx.adapter;
 
 import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
-import edu.carlosliam.hotelmanagementfx.model.Employee;
-import edu.carlosliam.hotelmanagementfx.model.Task;
+import edu.carlosliam.hotelmanagementfx.model.data.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
@@ -11,6 +10,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 
 public class TaskListViewCell extends ListCell<Task> {
@@ -65,11 +65,13 @@ public class TaskListViewCell extends ListCell<Task> {
     }
 
     private void bind(Task task) {
+        SimpleDateFormat formatter = new SimpleDateFormat("d MMM yyyy HH:mm:ss");
+
         lblName.setText(task.getDescription());
         lblType.setText(task.getType());
         lblStatus.setText("Available");
         lblEmployeeName.setText("Unassigned");
-        lblDate.setText(task.getDateStart().toString());
+        lblDate.setText(formatter.format(task.getDateStart()));
 
         setText(null);
         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);

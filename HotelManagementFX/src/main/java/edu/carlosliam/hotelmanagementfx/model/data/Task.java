@@ -1,4 +1,4 @@
-package edu.carlosliam.hotelmanagementfx.model;
+package edu.carlosliam.hotelmanagementfx.model.data;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,27 +8,27 @@ import java.util.Date;
 public class Task {
 
     @SerializedName("code")
-    public String codTask;
+    private String codTask;
 
     @SerializedName("description")
-    public String description;
+    private String description;
 
     @SerializedName("category")
-    public String type;
+    private String type;
 
     @SerializedName("start_date")
-    public Date dateStart;
+    private Date dateStart;
 
     @SerializedName("end_date")
-    public Date dateEnd;
+    private Date dateEnd;
 
     @SerializedName("employee_id")
-    public String employeeId;
+    private String employeeId;
 
-    public int priority;
+    private int priority;
 
     @SerializedName("time")
-    public int estimatedTime;
+    private int estimatedTime;
   
     public Task(String description, String status, String type, Date dateStart, Date dateEnd, String employeeId, int priority, int estimatedTime) {
         this.description = description;
