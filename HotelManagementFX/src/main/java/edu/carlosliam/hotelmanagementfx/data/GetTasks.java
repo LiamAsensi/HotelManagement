@@ -22,12 +22,8 @@ public class GetTasks extends Service<TaskListResponse> {
                 String json = ServiceUtils.getResponse(
                         ServiceUtils.SERVER + "/tasks" + filter, null, "GET");
 
-                System.out.println(json);
-
                 Gson gson = new Gson();
                 TaskListResponse response = gson.fromJson(json, TaskListResponse.class);
-
-                System.out.println("a");
 
                 return response;
             }

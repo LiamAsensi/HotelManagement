@@ -12,12 +12,13 @@ app.listen(8080);
 
 app.get("/employees", (req, res) => {
   res.send({
+    error: false,
     result: [
       {
         id: "1",
         dni: "12345678A",
         name: "John",
-        surname: "Doe",
+        surnames: "Doe",
         profession: "Developer",
         password: "1234",
         email: "email@email.com"
@@ -26,7 +27,7 @@ app.get("/employees", (req, res) => {
         id: "2",
         dni: "87654321B",
         name: "Jane",
-        surname: "Doe",
+        surnames: "Doe",
         profession: "Designer",
         password: "1234",
         email: "jane@email.com"
@@ -35,7 +36,7 @@ app.get("/employees", (req, res) => {
         id: "3",
         dni: "11111111C",
         name: "Alice",
-        surname: "Doe",
+        surnames: "Doe",
         profession: "Manager",
         password: "1234",
         email: "alice@email.com"
@@ -46,6 +47,7 @@ app.get("/employees", (req, res) => {
 
 app.get("/tasks", (req, res) => {
   res.send({
+    error: false,
     result: [
       {
         code: "1",

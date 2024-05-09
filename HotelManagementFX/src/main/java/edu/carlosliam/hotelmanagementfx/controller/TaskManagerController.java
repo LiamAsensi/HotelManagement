@@ -53,7 +53,7 @@ public class TaskManagerController {
         getTasks.setOnSucceeded(e -> {
             if (!getTasks.getValue().isError()) {
                 System.out.println(getTasks.getValue().getResult());
-                lsTasks.setItems(FXCollections.observableArrayList(getTasks.getValue().getResult()));
+                lvTasks.setItems(FXCollections.observableArrayList(getTasks.getValue().getResult()));
             } else {
                 MessageUtils.showError("Error getting tasks", getTasks.getValue().getErrorMessage());
             }
