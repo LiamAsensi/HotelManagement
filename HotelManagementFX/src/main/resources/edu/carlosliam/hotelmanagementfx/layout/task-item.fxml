@@ -16,20 +16,20 @@
                <children>
                   <VBox>
                      <children>
-                        <Label fx:id="lblName" text="Employee's Full Name">
+                        <Label fx:id="lblName" text="Task's Name">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblProfession" text="Profession" />
+                        <Label fx:id="lblType" text="Type Task" />
                      </children>
                   </VBox>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblEmail" text="email@employee.com" />
-                  <Region HBox.hgrow="ALWAYS" />
                   <Label fx:id="lblStatus" text="Status" />
                   <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblDni" text="12345678A" />
+                  <Label fx:id="lblEmployeeName" text="Employee's Name" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblDate" text="Date" />
                </children>
                <HBox.margin>
                   <Insets />

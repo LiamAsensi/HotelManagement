@@ -2,19 +2,18 @@ package edu.carlosliam.hotelmanagementfx.adapter;
 
 import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
 import edu.carlosliam.hotelmanagementfx.model.Employee;
+import edu.carlosliam.hotelmanagementfx.model.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
-import javafx.util.Callback;
 
 import java.io.IOException;
 
 
-public class EmployeeListViewCell extends ListCell<Employee> {
+public class TaskListViewCell extends ListCell<Task> {
     @FXML
     private HBox hbMain;
 
@@ -22,16 +21,16 @@ public class EmployeeListViewCell extends ListCell<Employee> {
     private HBox hbContainer;
 
     @FXML
-    private Label lblDni;
+    private Label lblDate;
 
     @FXML
-    private Label lblEmail;
+    private Label lblEmployeeName;
 
     @FXML
     private Label lblName;
 
     @FXML
-    private Label lblProfession;
+    private Label lblType;
 
     @FXML
     private Label lblStatus;
@@ -39,16 +38,16 @@ public class EmployeeListViewCell extends ListCell<Employee> {
     private FXMLLoader fxmlLoader;
 
     @Override
-    protected void updateItem(Employee employee, boolean empty) {
-        super.updateItem(employee, empty);
+    protected void updateItem(Task task, boolean empty) {
+        super.updateItem(task, empty);
 
-        if (empty || employee == null) {
+        if (empty || task == null) {
             setText(null);
             setContentDisplay(ContentDisplay.TEXT_ONLY);
         } else {
             if (fxmlLoader == null) {
                 fxmlLoader = new FXMLLoader(
-                        HotelManagementApplication.class.getResource("layout/employee-item.fxml")
+                        HotelManagementApplication.class.getResource("layout/task-item.fxml")
                 );
                 fxmlLoader.setController(this);
                 fxmlLoader.setRoot(this);
@@ -61,16 +60,16 @@ public class EmployeeListViewCell extends ListCell<Employee> {
             }
             hbMain.setMaxWidth(Double.MAX_VALUE);
             hbContainer.setMaxWidth(Double.MAX_VALUE);
-            bind(employee);
+            bind(task);
         }
     }
 
-    private void bind(Employee employee) {
-        lblName.setText(employee.getName() + " " + employee.getSurnames());
-        lblProfession.setText(employee.getProfession());
-        lblEmail.setText(employee.getEmail());
+    private void bind(Task task) {
+        lblName.setText(task.getDescription());
+        lblType.setText(task.getType());
         lblStatus.setText("Available");
-        lblDni.setText(employee.getDni());
+        lblEmployeeName.setText("Unassigned");
+        lblDate.setText(task.getDate().toString());
 
         setText(null);
         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);

@@ -3,6 +3,7 @@ package edu.carlosliam.hotelmanagementfx.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Task {
 
@@ -17,10 +18,10 @@ public class Task {
     private String type;
 
     @SerializedName("start_date")
-    private DateTimeFormatter dateStart;
+    private Date dateStart;
 
     @SerializedName("end_date")
-    private DateTimeFormatter dateEnd;
+    private Date dateEnd;
 
     @SerializedName("employee_id")
     private String employeeId;
@@ -32,7 +33,7 @@ public class Task {
 
     private Employee employee;
 
-    public Task(String description, String status, String type, DateTimeFormatter dateStart, DateTimeFormatter dateEnd, String employeeId, int priority, int estimatedTime) {
+    public Task(String description, String status, String type, Date dateStart, Date dateEnd, String employeeId, int priority, int estimatedTime) {
         this.description = description;
         this.status = status;
         this.type = type;
@@ -56,11 +57,11 @@ public class Task {
         return type;
     }
 
-    public DateTimeFormatter getDate() {
+    public Date getDate() {
         return dateStart;
     }
 
-    public DateTimeFormatter getDateEnd() {
+    public Date getDateEnd() {
         return dateEnd;
     }
 
@@ -80,11 +81,11 @@ public class Task {
         this.type = type;
     }
 
-    public void setDate(DateTimeFormatter dateStart) {
+    public void setDate(Date dateStart) {
         this.dateStart = dateStart;
     }
 
-    public void setDateEnd(DateTimeFormatter dateEnd) {
+    public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
     }
 
