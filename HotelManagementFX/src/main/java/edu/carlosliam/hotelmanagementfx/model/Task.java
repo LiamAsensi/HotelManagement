@@ -8,34 +8,30 @@ import java.util.Date;
 public class Task {
 
     @SerializedName("code")
-    private String codTask;
+    public String codTask;
 
     @SerializedName("description")
-    private String description;
-    private String status;
+    public String description;
 
     @SerializedName("category")
-    private String type;
+    public String type;
 
     @SerializedName("start_date")
-    private Date dateStart;
+    public Date dateStart;
 
     @SerializedName("end_date")
-    private Date dateEnd;
+    public Date dateEnd;
 
     @SerializedName("employee_id")
-    private String employeeId;
+    public String employeeId;
 
-    private int priority;
+    public int priority;
 
     @SerializedName("time")
-    private int estimatedTime;
-
-    private Employee employee;
-
+    public int estimatedTime;
+  
     public Task(String description, String status, String type, Date dateStart, Date dateEnd, String employeeId, int priority, int estimatedTime) {
         this.description = description;
-        this.status = status;
         this.type = type;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -44,20 +40,19 @@ public class Task {
         this.estimatedTime = estimatedTime;
     }
 
+    public String getCodTask() {
+        return codTask;
+    }
 
     public String getDescription() {
         return description;
-    }
-
-    public String getStatus() {
-        return status;
     }
 
     public String getType() {
         return type;
     }
 
-    public Date getDate() {
+    public Date getDateStart() {
         return dateStart;
     }
 
@@ -65,16 +60,20 @@ public class Task {
         return dateEnd;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public int getEstimatedTime() {
+        return estimatedTime;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public void setType(String type) {
@@ -87,10 +86,6 @@ public class Task {
 
     public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 
     @Override

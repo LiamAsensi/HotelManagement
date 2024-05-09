@@ -1,11 +1,12 @@
 package edu.carlosliam.hotelmanagementfx.controller;
 
+import edu.carlosliam.hotelmanagementfx.data.GetTasks;
 import com.google.gson.Gson;
 import edu.carlosliam.hotelmanagementfx.adapter.TaskListViewCell;
 import edu.carlosliam.hotelmanagementfx.model.Employee;
 import edu.carlosliam.hotelmanagementfx.model.Task;
-import edu.carlosliam.hotelmanagementfx.model.TaskListResponse;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
+import javafx.collections.FXCollections;
 import edu.carlosliam.hotelmanagementfx.utils.ServiceUtils;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -21,7 +22,8 @@ public class TaskManagerController {
     @FXML
     private ListView<Task> lvTasks;
 
-    private final Gson gson = new Gson();
+    private GetTasks getTasks;
+  
     ObservableList<Task> taskObservableList;
 
     public TaskManagerController() {
@@ -45,6 +47,22 @@ public class TaskManagerController {
     public void initialize() {
         HMToolBar.disableButton(toolbar.btnGoToTasks);
 
+        getTasks = new GetTasks();
+        getTasks.start();
+
+        getTasks.setOnSucceeded(e -> {
+            if (!getTasks.getValue().isError()) {
+                System.out.println(getTasks.getValue().getResult());
+                lsTasks.setItems(FXCollections.observableArrayList(getTasks.getValue().getResult()));
+            } else {
+                MessageUtils.showError("Error getting tasks", getTasks.getValue().getErrorMessage());
+            }
+        });
+      
+        getTasks.setOnFailed(e -> {
+            MessageUtils.showError("Error", "Error connecting to the server");
+        });
+      
         lvTasks.setItems(taskObservableList);
         lvTasks.setCellFactory(taskListView -> {
             TaskListViewCell taskListViewCell = new TaskListViewCell();
@@ -52,29 +70,5 @@ public class TaskManagerController {
             return taskListViewCell;
         });
 
-        System.out.println("Get tasks");
-        getTasks();
-        System.out.println("Get tasks 2");
-
-    }
-
-    private void getTasks() {
-        String url = ServiceUtils.SERVER + "/tasks";
-        ServiceUtils.getResponseAsync(url, null, "GET")
-                .thenApply(json -> gson.fromJson(json, TaskListResponse.class))
-                .thenAccept(response -> {
-                    if (!response.isError()) {
-                        Platform.runLater(() -> {
-                            //lsTasks.getItems().setAll(response.getTasks());
-                            response.getTasks().forEach(System.out::println);
-                        });
-                    } else {
-                        MessageUtils.showError("Error", response.getErrorMessage());
-                    }
-                })
-                .exceptionally(e -> {
-                    MessageUtils.showError("Error", e.getMessage());
-                    return null;
-                });
     }
 }

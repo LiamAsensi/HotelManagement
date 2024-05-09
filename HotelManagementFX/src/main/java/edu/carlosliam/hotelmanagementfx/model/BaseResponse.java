@@ -1,8 +1,8 @@
 package edu.carlosliam.hotelmanagementfx.model;
 
 public class BaseResponse {
-    private boolean error;
-    private String errorMessage;
+    public boolean error;
+    public String errorMessage;
 
     public boolean isError() {
         return error;
