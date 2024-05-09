@@ -1,20 +1,13 @@
 package edu.carlosliam.hotelmanagementfx.controller;
 
-import edu.carlosliam.hotelmanagementfx.data.GetTasks;
-import com.google.gson.Gson;
+import edu.carlosliam.hotelmanagementfx.service.GetTasks;
 import edu.carlosliam.hotelmanagementfx.adapter.TaskListViewCell;
-import edu.carlosliam.hotelmanagementfx.model.Employee;
-import edu.carlosliam.hotelmanagementfx.model.Task;
+import edu.carlosliam.hotelmanagementfx.model.data.Task;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
-import javafx.collections.FXCollections;
-import edu.carlosliam.hotelmanagementfx.utils.ServiceUtils;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-
-import java.util.Date;
 
 public class TaskManagerController {
     public HMToolBar toolbar;
