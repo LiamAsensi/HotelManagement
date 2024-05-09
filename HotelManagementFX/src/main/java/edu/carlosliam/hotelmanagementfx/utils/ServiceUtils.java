@@ -46,7 +46,7 @@ public class ServiceUtils
             conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod(method);
 
-            //conn.setRequestProperty("Host", "localhost");
+            conn.setRequestProperty("Host", "localhost");
             conn.setRequestProperty("Connection", "keep-alive");
             conn.setRequestProperty("Accept", "application/json");
             conn.setRequestProperty("Accept-Encoding", "gzip,deflate,sdch");
