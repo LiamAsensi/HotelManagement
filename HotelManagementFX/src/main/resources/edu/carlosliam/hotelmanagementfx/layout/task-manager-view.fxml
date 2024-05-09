@@ -12,7 +12,6 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
 <?import edu.carlosliam.hotelmanagementfx.controller.HMToolBar?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #FFF5E6;" stylesheets="@../css/manager.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.TaskManagerController">
    <top>
@@ -55,16 +54,16 @@
                               <ChoiceBox prefWidth="150.0" />
                            </children>
                         </HBox>
-                        <ListView fx:id="lvTasks" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <ListView fx:id="lvTasks" prefHeight="507.0" prefWidth="765.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
-                  <VBox id="context-buttons" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="30.0">
+                  <VBox id="context-buttons" alignment="CENTER" prefHeight="567.0" prefWidth="195.0" spacing="30.0">
                      <children>
                         <Button mnemonicParsing="false">
                            <graphic>
                               <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
                                  <children>
-                                    <FontIcon iconLiteral="mdi2b-briefcase-edit" iconSize="35" />
+                                    <FontIcon iconLiteral="mdi2p-pencil-box-multiple" iconSize="35" />
                                     <Label text="Edit">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
@@ -81,8 +80,8 @@
                            <graphic>
                               <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
                                  <children>
-                                    <FontIcon fill="#bf2222" iconColor="#dc3d3d" iconLiteral="mdi2b-briefcase-off" iconSize="35" />
-                                    <Label text="Fire" textFill="#dc3d3d">
+                                    <FontIcon iconLiteral="mdi2t-trash-can" iconSize="35" text="󰩹" />
+                                    <Label text="Delete" textFill="#dc3d3d">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
