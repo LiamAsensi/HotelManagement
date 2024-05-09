@@ -29,7 +29,7 @@ public class Task {
 
     @SerializedName("time")
     public int estimatedTime;
-
+  
     public Task(String description, String status, String type, Date dateStart, Date dateEnd, String employeeId, int priority, int estimatedTime) {
         this.description = description;
         this.type = type;
