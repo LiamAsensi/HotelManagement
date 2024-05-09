@@ -69,7 +69,7 @@ public class TaskListViewCell extends ListCell<Task> {
         lblType.setText(task.getType());
         lblStatus.setText("Available");
         lblEmployeeName.setText("Unassigned");
-        lblDate.setText(task.getDate().toString());
+        lblDate.setText(task.getDateStart().toString());
 
         setText(null);
         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
