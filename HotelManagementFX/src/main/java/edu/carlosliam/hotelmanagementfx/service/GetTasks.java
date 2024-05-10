@@ -20,12 +20,13 @@ public class GetTasks extends Service<TaskListResponse> {
             @Override
             protected TaskListResponse call() throws Exception {
                 String json = ServiceUtils.getResponse(
-                        ServiceUtils.SERVER + "/tasks" + filter, null, "GET");
+                        ServiceUtils.SERVER + "/api/trabajos" + filter, null, "GET");
+
+                System.out.println(json);
 
                 Gson gson = new Gson();
-                TaskListResponse response = gson.fromJson(json, TaskListResponse.class);
 
-                return response;
+                return gson.fromJson(json, TaskListResponse.class);
             }
         };
     }

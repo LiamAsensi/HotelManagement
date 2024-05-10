@@ -69,9 +69,21 @@ public class TaskListViewCell extends ListCell<Task> {
 
         lblName.setText(task.getDescription());
         lblType.setText(task.getType());
-        lblStatus.setText("Available");
-        lblEmployeeName.setText("Unassigned");
-        lblDate.setText(formatter.format(task.getDateStart()));
+        if (task.getEmployee() != null && task.getDateEnd() != null) {
+            lblStatus.setText("Finished");
+            lblEmployeeName.setText(task.getEmployee().getName() + " " + task.getEmployee().getSurnames());
+        } else if (task.getEmployee() != null && task.getDateEnd() == null) {
+            lblStatus.setText("Assigned");
+            lblEmployeeName.setText(task.getEmployee().getName() + " " + task.getEmployee().getSurnames());
+        } else {
+            lblStatus.setText("Unassigned");
+        }
+
+        if (task.getDateEnd() != null) {
+            lblDate.setText(formatter.format(task.getDateStart()));
+        } else {
+            lblDate.setText("Not started");
+        }
 
         setText(null);
         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);

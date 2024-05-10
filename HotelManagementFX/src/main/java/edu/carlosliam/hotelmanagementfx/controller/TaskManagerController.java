@@ -32,7 +32,7 @@ public class TaskManagerController {
 
         getTasks.setOnSucceeded(e -> {
             if (!getTasks.getValue().isError()) {
-                taskObservableList.addAll((getTasks.getValue().getResult()));
+                taskObservableList.addAll(getTasks.getValue().getResult());
             } else {
                 MessageUtils.showError("Error getting tasks", getTasks.getValue().getErrorMessage());
             }
