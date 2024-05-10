@@ -72,8 +72,14 @@ public class ServiceUtils
 
             String charset = getCharset(conn.getHeaderField("Content-Type"));
 
+            InputStream input;
+            if (conn.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST) {
+                input = conn.getInputStream();
+            } else {
+                input = conn.getErrorStream();
+            }
+
             if (charset != null) {
-                InputStream input = conn.getInputStream();
                 if ("gzip".equals(conn.getContentEncoding())) {
                     input = new GZIPInputStream(input);
                 }

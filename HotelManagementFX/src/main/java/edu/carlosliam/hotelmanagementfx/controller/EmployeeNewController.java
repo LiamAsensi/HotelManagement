@@ -60,12 +60,11 @@ public class EmployeeNewController {
             postEmployee.setOnSucceeded(e-> {
                 if (!postEmployee.getValue().isError()) {
                     System.out.println(postEmployee.getValue().getEmployee());
+                    ModalUtils.modalStage.close();
                 } else {
                     MessageUtils.showError("Error posting employee", postEmployee.getValue().getErrorMessage());
                 }
             });
-
-            ModalUtils.modalStage.close();
         }
     }
 
