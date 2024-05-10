@@ -89,7 +89,7 @@
          <children>
             <HBox alignment="BOTTOM_CENTER">
                <children>
-                  <Label text="ver 0.1.0" textFill="#404040">
+                  <Label text="ver 0.2.0" textFill="#404040">
                      <font>
                         <Font size="10.0" />
                      </font>
