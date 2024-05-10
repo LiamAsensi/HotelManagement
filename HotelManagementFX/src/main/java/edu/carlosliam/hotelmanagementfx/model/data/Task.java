@@ -7,35 +7,36 @@ import java.util.Date;
 
 public class Task {
 
-    @SerializedName("code")
+    @SerializedName("codTrab")
     private String codTask;
 
-    @SerializedName("description")
+    @SerializedName("descripcion")
     private String description;
 
-    @SerializedName("category")
+    @SerializedName("categoria")
     private String type;
 
-    @SerializedName("start_date")
+    @SerializedName("fecIni")
     private Date dateStart;
 
-    @SerializedName("end_date")
+    @SerializedName("fecFin")
     private Date dateEnd;
 
-    @SerializedName("employee_id")
-    private String employeeId;
+    @SerializedName("trabajador")
+    private Employee employee;
 
+    @SerializedName("prioridad")
     private int priority;
 
-    @SerializedName("time")
+    @SerializedName("tiempo")
     private int estimatedTime;
   
-    public Task(String description, String status, String type, Date dateStart, Date dateEnd, String employeeId, int priority, int estimatedTime) {
+    public Task(String description, String status, String type, Date dateStart, Date dateEnd, Employee employee, int priority, int estimatedTime) {
         this.description = description;
         this.type = type;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
-        this.employeeId = employeeId;
+        this.employee = employee;
         this.priority = priority;
         this.estimatedTime = estimatedTime;
     }
@@ -60,8 +61,8 @@ public class Task {
         return dateEnd;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public Employee getEmployee() {
+        return employee;
     }
 
     public int getPriority() {
