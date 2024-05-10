@@ -1,7 +1,7 @@
 package edu.carlosliam.hotelmanagementfx.adapter;
 
 import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
-import edu.carlosliam.hotelmanagementfx.model.data.Task;
+import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 
-public class TaskListViewCell extends ListCell<Task> {
+public class TaskListViewCell extends ListCell<Assignment> {
     @FXML
     private HBox hbMain;
 
@@ -38,10 +38,10 @@ public class TaskListViewCell extends ListCell<Task> {
     private FXMLLoader fxmlLoader;
 
     @Override
-    protected void updateItem(Task task, boolean empty) {
-        super.updateItem(task, empty);
+    protected void updateItem(Assignment assignment, boolean empty) {
+        super.updateItem(assignment, empty);
 
-        if (empty || task == null) {
+        if (empty || assignment == null) {
             setText(null);
             setContentDisplay(ContentDisplay.TEXT_ONLY);
         } else {
@@ -60,27 +60,27 @@ public class TaskListViewCell extends ListCell<Task> {
             }
             hbMain.setMaxWidth(Double.MAX_VALUE);
             hbContainer.setMaxWidth(Double.MAX_VALUE);
-            bind(task);
+            bind(assignment);
         }
     }
 
-    private void bind(Task task) {
+    private void bind(Assignment assignment) {
         SimpleDateFormat formatter = new SimpleDateFormat("d MMM yyyy HH:mm:ss");
 
-        lblName.setText(task.getDescription());
-        lblType.setText(task.getType());
-        if (task.getEmployee() != null && task.getDateEnd() != null) {
+        lblName.setText(assignment.getDescription());
+        lblType.setText(assignment.getType());
+        if (assignment.getEmployee() != null && assignment.getDateEnd() != null) {
             lblStatus.setText("Finished");
-            lblEmployeeName.setText(task.getEmployee().getName() + " " + task.getEmployee().getSurnames());
-        } else if (task.getEmployee() != null && task.getDateEnd() == null) {
+            lblEmployeeName.setText(assignment.getEmployee().getName() + " " + assignment.getEmployee().getSurnames());
+        } else if (assignment.getEmployee() != null && assignment.getDateEnd() == null) {
             lblStatus.setText("Assigned");
-            lblEmployeeName.setText(task.getEmployee().getName() + " " + task.getEmployee().getSurnames());
+            lblEmployeeName.setText(assignment.getEmployee().getName() + " " + assignment.getEmployee().getSurnames());
         } else {
             lblStatus.setText("Unassigned");
         }
 
-        if (task.getDateEnd() != null) {
-            lblDate.setText(formatter.format(task.getDateStart()));
+        if (assignment.getDateEnd() != null) {
+            lblDate.setText(formatter.format(assignment.getDateStart()));
         } else {
             lblDate.setText("Not started");
         }

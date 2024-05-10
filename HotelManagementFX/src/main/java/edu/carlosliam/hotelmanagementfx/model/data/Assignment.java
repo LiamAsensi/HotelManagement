@@ -2,10 +2,10 @@ package edu.carlosliam.hotelmanagementfx.model.data;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 import java.util.Date;
 
-public class Task {
+public class Assignment {
 
     @SerializedName("codTrab")
     private String codTask;
@@ -17,10 +17,10 @@ public class Task {
     private String type;
 
     @SerializedName("fecIni")
-    private Date dateStart;
+    private LocalDate dateStart;
 
     @SerializedName("fecFin")
-    private Date dateEnd;
+    private LocalDate dateEnd;
 
     @SerializedName("trabajador")
     private Employee employee;
@@ -31,7 +31,8 @@ public class Task {
     @SerializedName("tiempo")
     private int estimatedTime;
   
-    public Task(String description, String status, String type, Date dateStart, Date dateEnd, Employee employee, int priority, int estimatedTime) {
+    public Assignment(String codTask, String description, String type, LocalDate dateStart, LocalDate dateEnd, Employee employee, int priority, int estimatedTime) {
+        this.codTask = codTask;
         this.description = description;
         this.type = type;
         this.dateStart = dateStart;
@@ -53,11 +54,11 @@ public class Task {
         return type;
     }
 
-    public Date getDateStart() {
+    public LocalDate getDateStart() {
         return dateStart;
     }
 
-    public Date getDateEnd() {
+    public LocalDate getDateEnd() {
         return dateEnd;
     }
 
@@ -81,11 +82,11 @@ public class Task {
         this.type = type;
     }
 
-    public void setDate(Date dateStart) {
+    public void setDate(LocalDate dateStart) {
         this.dateStart = dateStart;
     }
 
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(LocalDate dateEnd) {
         this.dateEnd = dateEnd;
     }
 
