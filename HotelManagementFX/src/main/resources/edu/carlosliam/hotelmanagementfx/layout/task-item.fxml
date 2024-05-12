@@ -30,6 +30,12 @@
                   <Label fx:id="lblEmployeeName" text="Employee's Name" />
                   <Region HBox.hgrow="ALWAYS" />
                   <Label fx:id="lblDate" text="Date" />
+                  <Region />
+                  <Label fx:id="lblPriority" text="Priority">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
                <HBox.margin>
                   <Insets />

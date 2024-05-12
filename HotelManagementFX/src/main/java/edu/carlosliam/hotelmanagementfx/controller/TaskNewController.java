@@ -20,13 +20,19 @@ public class TaskNewController {
     @FXML
     private TextField tfType;
 
+    @FXML
     private DatePicker dpSd;
+
+    @FXML
     private DatePicker dpFd;
 
+    @FXML
     private ChoiceBox<Integer> cbPriority;
 
+    @FXML
     private ChoiceBox<Integer> cbTime;
 
+    @FXML
     private ChoiceBox<Employee> cbEmployee;
     private PostTask postTask;
 
@@ -57,7 +63,7 @@ public class TaskNewController {
                     System.out.println(postTask.getValue().getTask());
                     ModalUtils.modalStage.close();
                 } else {
-                    MessageUtils.showError("Error posting employee", postTask.getValue().getErrorMessage());
+                    MessageUtils.showError("Error posting task", postTask.getValue().getErrorMessage());
                 }
             });
         }
