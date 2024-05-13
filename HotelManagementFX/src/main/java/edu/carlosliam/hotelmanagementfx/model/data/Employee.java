@@ -81,12 +81,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "dni='" + dni + '\'' +
-                ", name='" + name + '\'' +
-                ", surnames='" + surnames + '\'' +
-                ", profession='" + profession + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return String.format("%s %s - %s - %s - %s", name, surnames, dni, profession, email);
     }
 }

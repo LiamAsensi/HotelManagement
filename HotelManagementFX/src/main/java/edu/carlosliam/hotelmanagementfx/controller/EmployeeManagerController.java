@@ -26,7 +26,7 @@ public class EmployeeManagerController implements Initializable {
     @FXML
     private ListView<Employee> lvEmployees;
     public static ObservableList<Employee> employeeObservableList;
-    private GetEmployees getEmployees;
+    public static GetEmployees getEmployees;
 
     public EmployeeManagerController() {
         employeeObservableList = FXCollections.observableArrayList();
@@ -52,7 +52,10 @@ public class EmployeeManagerController implements Initializable {
         updateItems();
     }
 
-    private void updateItems() {
+    public static void updateItems() {
+        if (employeeObservableList == null) {
+            employeeObservableList = FXCollections.observableArrayList();
+        }
         employeeObservableList.clear();
         getEmployees = new GetEmployees();
         getEmployees.start();

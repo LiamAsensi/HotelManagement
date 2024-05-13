@@ -5,12 +5,8 @@ import edu.carlosliam.hotelmanagementfx.service.PostEmployee;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class EmployeeNewController {
     @FXML
@@ -40,7 +36,6 @@ public class EmployeeNewController {
     public void close() {
         ModalUtils.modalStage.close();
     }
-
     @FXML
     public void saveEmployee() {
         if (!isFormEmpty()) {

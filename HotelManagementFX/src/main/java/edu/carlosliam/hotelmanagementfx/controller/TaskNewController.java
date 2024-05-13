@@ -30,11 +30,19 @@ public class TaskNewController {
     private ChoiceBox<Integer> cbPriority;
 
     @FXML
-    private ChoiceBox<Integer> cbTime;
+    private TextField cbTime;
 
     @FXML
     private ChoiceBox<Employee> cbEmployee;
     private PostTask postTask;
+
+    public void initialize() {
+
+        cbPriority.getItems().addAll(1, 2, 3, 4, 5);
+
+        cbEmployee.setItems(EmployeeManagerController.employeeObservableList);
+    }
+
 
     @FXML
     public void close() {
@@ -52,7 +60,7 @@ public class TaskNewController {
                     dpFd.getValue(),
                     cbEmployee.getValue(),
                     cbPriority.getValue(),
-                    cbTime.getValue()
+                    0
             );
 
             postTask = new PostTask(assignment);
@@ -73,10 +81,8 @@ public class TaskNewController {
         return tfType.getText().isBlank() ||
                 cbEmployee.getValue().toString().isBlank() ||
                 cbPriority.getValue().toString().isBlank() ||
-                cbTime.getValue().toString().isBlank() ||
-                dpSd.getValue().toString().isBlank() ||
-                dpFd.getValue().toString().isBlank() ||
                 tfId.getText().isBlank() ||
-                tfDescription.getText().isBlank();
+                tfDescription.getText().isBlank() ||
+                dpSd.getValue().toString().isBlank();
     }
 }
