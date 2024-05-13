@@ -5,12 +5,11 @@ import edu.carlosliam.hotelmanagementfx.service.PostEmployee;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class EmployeeNewController {
     @FXML
@@ -50,7 +49,7 @@ public class EmployeeNewController {
                     tfName.getText(),
                     tfSurname.getText(),
                     tfProfession.getText(),
-                    pfPassword.getText(),
+                    encryptPassword(pfPassword.getText()),
                     tfEmail.getText()
             );
 
@@ -76,5 +75,22 @@ public class EmployeeNewController {
                 tfName.getText().isBlank() ||
                 tfProfession.getText().isBlank() ||
                 tfSurname.getText().isBlank();
+    }
+
+    private String encryptPassword(String password) {
+        StringBuilder sb = new StringBuilder();
+
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(password.getBytes());
+
+            for(byte b : hash) {
+                sb.append(String.format("%02x", b));
+            }
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        return sb.toString();
     }
 }
