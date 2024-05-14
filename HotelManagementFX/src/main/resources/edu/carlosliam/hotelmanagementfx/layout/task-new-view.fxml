@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.EmployeeNewController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.TaskNewController">
    <children>
       <HBox prefWidth="200.0">
          <children>
@@ -31,20 +31,21 @@
       <Separator prefWidth="200.0" />
       <HBox alignment="CENTER" prefWidth="200.0" spacing="10.0">
          <children>
-            <TextField fx:id="tfDecription" promptText="Task's description" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="tfDescription" promptText="Task's description" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
       <HBox spacing="10.0">
          <children>
             <TextField fx:id="tfId" promptText="Task's ID" HBox.hgrow="ALWAYS" />
             <ChoiceBox fx:id="cbPriority" prefWidth="150.0" />
-            <ChoiceBox fx:id="cbTime" prefWidth="150.0" />
+            <TextField fx:id="tfTime" />
          </children>
       </HBox>
       <TextField fx:id="tfType" promptText="Type assignment" />
-      <HBox fx:id="dpSd" alignment="CENTER" prefHeight="27.0" prefWidth="500.0">
+      <!-- Date pickers fx:id="dpSd" -->
+      <HBox alignment="CENTER" prefHeight="27.0" prefWidth="500.0">
          <children>
-            <DatePicker nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="252.0" promptText="Start date">
+            <DatePicker fx:id="dpSd" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="252.0" promptText="Start date">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -59,7 +60,7 @@
          </opaqueInsets>
       </HBox>
       <ChoiceBox fx:id="cbEmployee" prefHeight="25.0" prefWidth="529.0" />
-      <Button mnemonicParsing="false" onAction="#saveEmployee" text="Save">
+      <Button mnemonicParsing="false" onAction="#saveTask" text="Save">
          <graphic>
             <FontIcon iconLiteral="mdi2c-content-save" iconSize="15" />
          </graphic>
