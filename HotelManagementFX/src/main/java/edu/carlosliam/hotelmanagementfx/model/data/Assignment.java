@@ -29,9 +29,9 @@ public class Assignment {
     private int priority;
 
     @SerializedName("tiempo")
-    private int estimatedTime;
+    private float estimatedTime;
   
-    public Assignment(String codTask, String description, String type, LocalDate dateStart, LocalDate dateEnd, Employee employee, int priority, int estimatedTime) {
+    public Assignment(String codTask, String description, String type, LocalDate dateStart, LocalDate dateEnd, Employee employee, int priority, float estimatedTime) {
         this.codTask = codTask;
         this.description = description;
         this.type = type;
@@ -70,7 +70,7 @@ public class Assignment {
         return priority;
     }
 
-    public int getEstimatedTime() {
+    public float getEstimatedTime() {
         return estimatedTime;
     }
 
