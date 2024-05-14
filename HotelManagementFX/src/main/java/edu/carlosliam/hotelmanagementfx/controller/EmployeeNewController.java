@@ -7,7 +7,6 @@ import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -39,7 +38,6 @@ public class EmployeeNewController {
     public void close() {
         ModalUtils.modalStage.close();
     }
-
     @FXML
     public void saveEmployee() {
         if (!isFormEmpty()) {

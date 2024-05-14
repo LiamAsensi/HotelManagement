@@ -20,7 +20,7 @@ public class TaskManagerController {
 
     private GetTasks getTasks;
 
-    ObservableList<Assignment> assignmentObservableList;
+    public static ObservableList<Assignment> assignmentObservableList;
 
     public TaskManagerController() {
         assignmentObservableList = FXCollections.observableArrayList();
@@ -30,6 +30,7 @@ public class TaskManagerController {
         HMToolBar.disableButton(toolbar.btnGoToTasks);
         lvTasks.setItems(assignmentObservableList);
 
+        EmployeeManagerController.updateItems();
         updateItems();
 
         lvTasks.setCellFactory(taskListView -> {

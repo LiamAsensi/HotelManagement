@@ -33,6 +33,12 @@ public class TaskListViewCell extends ListCell<Assignment> {
     private Label lblType;
 
     @FXML
+    private Label lblDateEnd;
+
+    @FXML
+    private Label lblPriority;
+
+    @FXML
     private Label lblStatus;
 
     private FXMLLoader fxmlLoader;
@@ -65,8 +71,6 @@ public class TaskListViewCell extends ListCell<Assignment> {
     }
 
     private void bind(Assignment assignment) {
-        SimpleDateFormat formatter = new SimpleDateFormat("d MMM yyyy HH:mm:ss");
-
         lblName.setText(assignment.getDescription());
         lblType.setText(assignment.getType());
         if (assignment.getEmployee() != null && assignment.getDateEnd() != null) {
@@ -80,10 +84,12 @@ public class TaskListViewCell extends ListCell<Assignment> {
         }
 
         if (assignment.getDateEnd() != null) {
-            lblDate.setText(formatter.format(assignment.getDateStart()));
+            lblDate.setText(assignment.getDateStart().toString());
         } else {
             lblDate.setText("Not started");
         }
+
+        lblPriority.setText(assignment.getPriority() + "");
 
         setText(null);
         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
