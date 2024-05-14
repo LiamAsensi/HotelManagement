@@ -11,11 +11,13 @@ import javafx.concurrent.Task;
 
 import java.time.LocalDate;
 
-public class PostTask extends Service<TaskResponse> {
+public class PostTaskAssigned extends Service<TaskResponse> {
     private Assignment assignment;
+    private String employeeId;
 
-    public PostTask(Assignment assignment) {
+    public PostTaskAssigned(Assignment assignment, String employeeId) {
         this.assignment = assignment;
+        this.employeeId = employeeId;
     }
 
     @Override
@@ -32,7 +34,8 @@ public class PostTask extends Service<TaskResponse> {
                 System.out.println();
 
                 String json = ServiceUtils.getResponse(
-                        ServiceUtils.SERVER + "/api/trabajos", gson.toJson(assignment), "POST");
+                        ServiceUtils.SERVER + "/api/trabajos/" + employeeId,
+                        gson.toJson(assignment), "POST");
 
                 return gson.fromJson(json, TaskResponse.class);
             }

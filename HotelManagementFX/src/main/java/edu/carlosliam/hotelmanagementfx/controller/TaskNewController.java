@@ -3,6 +3,7 @@ package edu.carlosliam.hotelmanagementfx.controller;
 import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
 import edu.carlosliam.hotelmanagementfx.model.data.Employee;
 import edu.carlosliam.hotelmanagementfx.service.PostTask;
+import edu.carlosliam.hotelmanagementfx.service.PostTaskAssigned;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
 import javafx.fxml.FXML;
@@ -36,6 +37,8 @@ public class TaskNewController {
     private ChoiceBox<Employee> cbEmployee;
     private PostTask postTask;
 
+    private PostTaskAssigned postTaskAssigned;
+
     public void initialize() {
 
         cbPriority.getItems().addAll(1, 2, 3, 4, 5);
@@ -58,28 +61,41 @@ public class TaskNewController {
                     tfType.getText(),
                     dpSd.getValue(),
                     dpFd.getValue(),
-                    cbEmployee.getValue(),
+                    null,
                     cbPriority.getValue(),
                     0
             );
 
-            postTask = new PostTask(assignment);
-            postTask.start();
+            if (cbEmployee.getValue() == null) {
+                postTask = new PostTask(assignment);
+                postTask.start();
 
-            postTask.setOnSucceeded(e-> {
-                if (!postTask.getValue().isError()) {
-                    System.out.println(postTask.getValue().getTask());
-                    ModalUtils.modalStage.close();
-                } else {
-                    MessageUtils.showError("Error posting task", postTask.getValue().getErrorMessage());
-                }
-            });
+                postTask.setOnSucceeded(e-> {
+                    if (!postTask.getValue().isError()) {
+                        System.out.println(postTask.getValue().getTask());
+                        ModalUtils.modalStage.close();
+                    } else {
+                        MessageUtils.showError("Error posting task", postTask.getValue().getErrorMessage());
+                    }
+                });
+            } else {
+                postTaskAssigned = new PostTaskAssigned(assignment, cbEmployee.getValue().getId());
+                postTaskAssigned.start();
+
+                postTaskAssigned.setOnSucceeded(e-> {
+                    if (!postTaskAssigned.getValue().isError()) {
+                        System.out.println(postTaskAssigned.getValue().getTask());
+                        ModalUtils.modalStage.close();
+                    } else {
+                        MessageUtils.showError("Error posting task", postTaskAssigned.getValue().getErrorMessage());
+                    }
+                });
+            }
         }
     }
 
     private boolean isFormEmpty() {
         return tfType.getText().isBlank() ||
-                cbEmployee.getValue().toString().isBlank() ||
                 cbPriority.getValue().toString().isBlank() ||
                 tfId.getText().isBlank() ||
                 tfDescription.getText().isBlank() ||
