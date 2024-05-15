@@ -19,7 +19,7 @@ public class TaskNewController {
     private TextField tfDescription;
 
     @FXML
-    private TextField tfType;
+    private ChoiceBox<String> tfType;
 
     @FXML
     private DatePicker dpSd;
@@ -41,7 +41,9 @@ public class TaskNewController {
 
     public void initialize() {
 
-        cbPriority.getItems().addAll(1, 2, 3, 4, 5);
+        cbPriority.getItems().addAll(1, 2, 3, 4);
+
+        tfType.getItems().addAll("Electricidad", "Limpieza", "Gestion", "Fontaneria", "Carpinteria");
 
         cbEmployee.setItems(EmployeeManagerController.employeeObservableList);
     }
@@ -58,7 +60,7 @@ public class TaskNewController {
             Assignment assignment = new Assignment(
                     tfId.getText(),
                     tfDescription.getText(),
-                    tfType.getText(),
+                    tfType.getValue(),
                     dpSd.getValue(),
                     dpFd.getValue(),
                     null,
@@ -95,7 +97,7 @@ public class TaskNewController {
     }
 
     private boolean isFormEmpty() {
-        return tfType.getText().isBlank() ||
+        return tfType.getValue().isBlank() ||
                 cbPriority.getValue().toString().isBlank() ||
                 tfId.getText().isBlank() ||
                 tfDescription.getText().isBlank() ||
