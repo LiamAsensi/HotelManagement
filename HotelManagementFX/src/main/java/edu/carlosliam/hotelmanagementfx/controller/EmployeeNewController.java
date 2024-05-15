@@ -56,7 +56,7 @@ public class EmployeeNewController {
 
             postEmployee.setOnSucceeded(e-> {
                 if (!postEmployee.getValue().isError()) {
-                    System.out.println(postEmployee.getValue().getEmployee());
+                    System.out.println(postEmployee.getValue().getResult());
                     ModalUtils.modalStage.close();
                 } else {
                     MessageUtils.showError("Error posting employee", postEmployee.getValue().getErrorMessage());
