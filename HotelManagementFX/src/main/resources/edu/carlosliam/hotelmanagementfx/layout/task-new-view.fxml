@@ -37,11 +37,22 @@
       <HBox spacing="10.0">
          <children>
             <TextField fx:id="tfId" promptText="Task's ID" HBox.hgrow="ALWAYS" />
-            <ChoiceBox fx:id="cbPriority" prefWidth="150.0" />
-            <TextField fx:id="tfTime" />
+            <TextField fx:id="tfTime" promptText="Time" />
          </children>
       </HBox>
-      <TextField fx:id="tfType" promptText="Type assignment" />
+      <HBox prefHeight="18.0" prefWidth="500.0">
+         <children>
+            <ChoiceBox fx:id="cbPriority" prefHeight="25.0" prefWidth="253.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="tfType" prefHeight="25.0" prefWidth="251.0" />
+         </children>
+      </HBox>
       <!-- Date pickers fx:id="dpSd" -->
       <HBox alignment="CENTER" prefHeight="27.0" prefWidth="500.0">
          <children>

@@ -83,7 +83,7 @@ public class TaskListViewCell extends ListCell<Assignment> {
             lblStatus.setText("Unassigned");
         }
 
-        if (assignment.getDateEnd() != null) {
+        if (assignment.getDateStart() != null) {
             lblDate.setText(assignment.getDateStart().toString());
         } else {
             lblDate.setText("Not started");
