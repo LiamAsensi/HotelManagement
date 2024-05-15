@@ -1,31 +1,29 @@
 package edu.carlosliam.hotelmanagementfx.service;
 
 import com.google.gson.Gson;
-import edu.carlosliam.hotelmanagementfx.model.response.EmployeeListResponse;
+import com.google.gson.reflect.TypeToken;
+import edu.carlosliam.hotelmanagementfx.model.data.Employee;
+import edu.carlosliam.hotelmanagementfx.model.response.Response;
 import edu.carlosliam.hotelmanagementfx.utils.ServiceUtils;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
-public class GetEmployees extends Service<EmployeeListResponse> {
-    private final String filter;
+import java.lang.reflect.Type;
+import java.util.List;
 
-    public GetEmployees() {
-        filter = "";
-    }
-
+public class GetEmployees extends Service<Response<List<Employee>>> {
     @Override
-    protected Task<EmployeeListResponse> createTask() {
-        return new Task<EmployeeListResponse>() {
+    protected Task<Response<List<Employee>>> createTask() {
+        return new Task<>() {
             @Override
-            protected EmployeeListResponse call() throws Exception {
+            protected Response<List<Employee>> call() {
                 String json = ServiceUtils.getResponse(
-                        ServiceUtils.SERVER + "/api/trabajadores" + filter, null, "GET");
-
-                System.out.println(json);
+                        ServiceUtils.SERVER + "/api/trabajadores", null, "GET");
 
                 Gson gson = new Gson();
 
-                return gson.fromJson(json, EmployeeListResponse.class);
+                return gson.fromJson(json,
+                        new TypeToken<Response<List<Employee>>>(){}.getType());
             }
         };
     }

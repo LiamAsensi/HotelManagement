@@ -8,25 +8,28 @@ import edu.carlosliam.hotelmanagementfx.utils.ServiceUtils;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
-public class PostEmployee extends Service<Response<Employee>> {
-    private final Employee employee;
+import java.util.List;
 
-    public PostEmployee(Employee employee) {
-        this.employee = employee;
+public class DeleteEmployee extends Service<Response<String>> {
+
+    private final String id;
+
+    public DeleteEmployee(String id) {
+        this.id = id;
     }
 
     @Override
-    protected Task<Response<Employee>> createTask() {
+    protected Task<Response<String>> createTask() {
         return new Task<>() {
             @Override
-            protected Response<Employee> call() throws Exception {
+            protected Response<String> call() {
+                String json = ServiceUtils.getResponse(
+                        ServiceUtils.SERVER + "/api/trabajadores/" + id, null, "DELETE");
+
                 Gson gson = new Gson();
 
-                String json = ServiceUtils.getResponse(
-                        ServiceUtils.SERVER + "/api/trabajadores", gson.toJson(employee), "POST");
-
                 return gson.fromJson(json,
-                        new TypeToken<Response<Employee>>(){}.getType());
+                        new TypeToken<Response<String>>(){}.getType());
             }
         };
     }
