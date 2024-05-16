@@ -1,5 +1,6 @@
 package edu.carlosliam.hotelmanagementfx.controller;
 
+import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
 import edu.carlosliam.hotelmanagementfx.adapter.EmployeeListViewCell;
 import edu.carlosliam.hotelmanagementfx.service.DeleteEmployee;
 import edu.carlosliam.hotelmanagementfx.service.GetEmployees;
@@ -9,7 +10,9 @@ import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
@@ -57,6 +60,14 @@ public class EmployeeManagerController implements Initializable {
                 );
 
         btnFire.setOnAction(e -> fireEmployee());
+
+        btnEditEmployee.setOnAction(e -> {
+            try {
+                editEmployee();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
     }
 
     @FXML
@@ -103,7 +114,20 @@ public class EmployeeManagerController implements Initializable {
                 }
             });
         }
+    }
 
+    private void editEmployee() throws IOException {
+        Employee employee = lvEmployees.getSelectionModel().getSelectedItem();
+        if (employee != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader(HotelManagementApplication.class.getResource("layout/employee-new-view.fxml"));
+            Parent parent = fxmlLoader.load();
+
+            EmployeeNewController controller = fxmlLoader.getController();
+            controller.setEmployeeEdit(employee);
+
+            ModalUtils.openModalParent(parent);
+            updateItems();
+        }
     }
 
     private void disableButtons(boolean disabled) {
