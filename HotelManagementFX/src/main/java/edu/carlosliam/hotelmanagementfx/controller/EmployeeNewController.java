@@ -6,18 +6,13 @@ import edu.carlosliam.hotelmanagementfx.service.PostEmployee;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ResourceBundle;
 
 public class EmployeeNewController {
-    @FXML
-    private PasswordField pfPassword;
 
     @FXML
     private TextField tfDni;
@@ -36,6 +31,9 @@ public class EmployeeNewController {
 
     @FXML
     private TextField tfSurname;
+
+    @FXML
+    private Label title;
 
     private PostEmployee postEmployee;
 
@@ -59,6 +57,8 @@ public class EmployeeNewController {
     public void setEmployeeEdit(Employee employee) {
         this.employeeEdit = employee;
 
+        title.setText("EDIT EMPLOYEE");
+
         tfId.setText(employee.getId());
         tfDni.setText(employee.getDni());
         tfName.setText(employee.getName());
@@ -67,8 +67,6 @@ public class EmployeeNewController {
         tfEmail.setText(employee.getEmail());
 
         tfId.setDisable(true);
-        pfPassword.setDisable(true);
-        pfPassword.setVisible(false);
         tfDni.setDisable(true);
     }
 
@@ -80,7 +78,7 @@ public class EmployeeNewController {
                     tfName.getText(),
                     tfSurname.getText(),
                     tfProfession.getText(),
-                    encryptPassword(pfPassword.getText()),
+                    encryptPassword(tfDni.getText()),
                     tfEmail.getText()
             );
 
@@ -125,8 +123,7 @@ public class EmployeeNewController {
     }
 
     private boolean isFormEmpty() {
-        return (pfPassword.getText().isBlank() && employeeEdit == null ) ||
-                tfDni.getText().isBlank() ||
+        return tfDni.getText().isBlank() ||
                 tfId.getText().isBlank() ||
                 tfEmail.getText().isBlank() ||
                 tfName.getText().isBlank() ||

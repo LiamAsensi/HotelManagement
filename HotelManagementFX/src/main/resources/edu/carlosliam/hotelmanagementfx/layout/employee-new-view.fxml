@@ -22,7 +22,7 @@
             </Button>
          </children>
       </HBox>
-      <Label text="NEW EMPLOYEE">
+      <Label fx:id="title" text="NEW EMPLOYEE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -42,7 +42,6 @@
       </HBox>
       <TextField fx:id="tfProfession" promptText="Employee's profession" />
       <TextField fx:id="tfEmail" promptText="Employee's email" />
-      <PasswordField fx:id="pfPassword" promptText="Employee's password" />
       <Button mnemonicParsing="false" onAction="#saveEmployee" text="Save">
          <graphic>
             <FontIcon iconLiteral="mdi2c-content-save" iconSize="15" />

@@ -65,7 +65,7 @@
                               <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
                                  <children>
                                     <FontIcon iconLiteral="mdi2f-file-document" iconSize="35" />
-                                    <Label text="Get paycheck">
+                                    <Label text="Generate paychecks">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>

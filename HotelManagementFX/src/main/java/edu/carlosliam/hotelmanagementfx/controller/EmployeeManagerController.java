@@ -2,12 +2,14 @@ package edu.carlosliam.hotelmanagementfx.controller;
 
 import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
 import edu.carlosliam.hotelmanagementfx.adapter.EmployeeListViewCell;
+import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
 import edu.carlosliam.hotelmanagementfx.service.DeleteEmployee;
 import edu.carlosliam.hotelmanagementfx.service.GetEmployees;
 import edu.carlosliam.hotelmanagementfx.model.data.Employee;
 import edu.carlosliam.hotelmanagementfx.service.GetEmployeesScheduled;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
+import edu.carlosliam.hotelmanagementfx.utils.PdfCreator;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,13 +55,10 @@ public class EmployeeManagerController implements Initializable {
         HMToolBar.disableButton(toolbar.btnGoToEmployees);
         lvEmployees.setItems(employeeObservableList);
 
-        //updateItems();
-
         getEmployeesScheduled = new GetEmployeesScheduled();
         getEmployeesScheduled.setPeriod(Duration.seconds(5));
         getEmployeesScheduled.setOnSucceeded(e -> {
-            if (getEmployeesScheduled.getValue() != employeeObservableList &&
-            getEmployeesScheduled.getValue() != null) {
+            if (getEmployeesScheduled.getValue() != employeeObservableList && getEmployeesScheduled.getValue() != null) {
                 employeeObservableList.clear();
                 employeeObservableList.addAll(getEmployeesScheduled.getValue());
             }
@@ -87,6 +86,14 @@ public class EmployeeManagerController implements Initializable {
                 editEmployee();
             } catch (IOException ioException) {
                 ioException.printStackTrace();
+            }
+        });
+
+        btnPaycheck.setOnAction(e -> {
+            try {
+                generatePaycheck();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
         });
     }
@@ -188,9 +195,12 @@ public class EmployeeManagerController implements Initializable {
         }
     }
 
+    private void generatePaycheck() throws IOException {
+        ModalUtils.openModal("layout/employee-paycheck-view.fxml");
+    }
+
     private void disableButtons(boolean disabled) {
         btnEditEmployee.setDisable(disabled);
         btnFire.setDisable(disabled);
-        btnPaycheck.setDisable(disabled);
     }
 }
