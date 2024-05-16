@@ -59,7 +59,7 @@
                   </VBox>
                   <VBox id="context-buttons" alignment="CENTER" prefHeight="567.0" prefWidth="195.0" spacing="30.0">
                      <children>
-                        <Button mnemonicParsing="false">
+                        <Button fx:id="btnEditTask" mnemonicParsing="false">
                            <graphic>
                               <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
                                  <children>
@@ -76,7 +76,7 @@
                               </VBox>
                            </graphic>
                         </Button>
-                        <Button id="fire-button" mnemonicParsing="false">
+                        <Button fx:id="btnDeleteTask" id="fire-button" mnemonicParsing="false">
                            <graphic>
                               <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
                                  <children>

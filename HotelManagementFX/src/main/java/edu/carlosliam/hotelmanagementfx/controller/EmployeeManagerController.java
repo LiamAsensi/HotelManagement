@@ -58,7 +58,8 @@ public class EmployeeManagerController implements Initializable {
         getEmployeesScheduled = new GetEmployeesScheduled();
         getEmployeesScheduled.setPeriod(Duration.seconds(5));
         getEmployeesScheduled.setOnSucceeded(e -> {
-            if (getEmployeesScheduled.getValue() != employeeObservableList) {
+            if (getEmployeesScheduled.getValue() != employeeObservableList &&
+            getEmployeesScheduled.getValue() != null) {
                 employeeObservableList.clear();
                 employeeObservableList.addAll(getEmployeesScheduled.getValue());
             }
@@ -94,6 +95,7 @@ public class EmployeeManagerController implements Initializable {
     public void addEmployee() throws IOException {
         ModalUtils.openModal("layout/employee-new-view.fxml");
         updateItems();
+        disableButtons(true);
     }
 
     public static void updateItems() {
@@ -182,6 +184,7 @@ public class EmployeeManagerController implements Initializable {
 
             ModalUtils.openModalParent(parent);
             updateItems();
+            disableButtons(true);
         }
     }
 
