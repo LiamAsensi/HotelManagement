@@ -18,7 +18,10 @@ public class GetEmployees extends Service<Response<List<Employee>>> {
             @Override
             protected Response<List<Employee>> call() {
                 String json = ServiceUtils.getResponse(
-                        ServiceUtils.SERVER + "/api/trabajadores", null, "GET");
+                        ServiceUtils.SERVER + "/api/trabajadores",
+                        null,
+                        "GET"
+                );
 
                 Gson gson = new Gson();
 

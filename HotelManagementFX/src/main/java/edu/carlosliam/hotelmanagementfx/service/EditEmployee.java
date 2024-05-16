@@ -8,10 +8,14 @@ import edu.carlosliam.hotelmanagementfx.utils.ServiceUtils;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
-public class PostEmployee extends Service<Response<Employee>> {
+import java.util.List;
+
+public class EditEmployee extends Service<Response<Employee>> {
+    private final String id;
     private final Employee employee;
 
-    public PostEmployee(Employee employee) {
+    public EditEmployee(String id, Employee employee) {
+        this.id = id;
         this.employee = employee;
     }
 
@@ -19,13 +23,13 @@ public class PostEmployee extends Service<Response<Employee>> {
     protected Task<Response<Employee>> createTask() {
         return new Task<>() {
             @Override
-            protected Response<Employee> call() throws Exception {
+            protected Response<Employee> call() {
                 Gson gson = new Gson();
 
                 String json = ServiceUtils.getResponse(
-                        ServiceUtils.SERVER + "/api/trabajadores",
+                        ServiceUtils.SERVER + "/api/trabajadores/" + id,
                         gson.toJson(employee),
-                        "POST"
+                        "PUT"
                 );
 
                 return gson.fromJson(json,
