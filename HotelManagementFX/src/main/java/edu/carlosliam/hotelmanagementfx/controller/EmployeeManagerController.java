@@ -102,6 +102,7 @@ public class EmployeeManagerController implements Initializable {
     public void addEmployee() throws IOException {
         ModalUtils.openModal("layout/employee-new-view.fxml");
         updateItems();
+        disableButtons(true);
     }
 
     public static void updateItems() {
@@ -190,6 +191,7 @@ public class EmployeeManagerController implements Initializable {
 
             ModalUtils.openModalParent(parent);
             updateItems();
+            disableButtons(true);
         }
     }
 

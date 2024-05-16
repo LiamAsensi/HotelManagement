@@ -2,15 +2,19 @@ package edu.carlosliam.hotelmanagementfx.service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import edu.carlosliam.hotelmanagementfx.adapter.LocalDateAdapter;
-import edu.carlosliam.hotelmanagementfx.model.response.TaskListResponse;
+import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
+import edu.carlosliam.hotelmanagementfx.model.data.Employee;
+import edu.carlosliam.hotelmanagementfx.model.response.Response;
 import edu.carlosliam.hotelmanagementfx.utils.ServiceUtils;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
 import java.time.LocalDate;
+import java.util.List;
 
-public class GetTasks extends Service<TaskListResponse> {
+public class GetTasks extends Service<Response<List<Assignment>>> {
     private final String filter;
 
     public GetTasks()
@@ -18,10 +22,10 @@ public class GetTasks extends Service<TaskListResponse> {
         filter="";
     }
     @Override
-    protected Task<TaskListResponse> createTask() {
-        return new Task<TaskListResponse>() {
+    protected Task<Response<List<Assignment>>> createTask() {
+        return new Task<Response<List<Assignment>>>() {
             @Override
-            protected TaskListResponse call() throws Exception {
+            protected Response<List<Assignment>> call() throws Exception {
                 String json = ServiceUtils.getResponse(
                         ServiceUtils.SERVER + "/api/trabajos" + filter, null, "GET");
 
@@ -31,7 +35,7 @@ public class GetTasks extends Service<TaskListResponse> {
                         .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
                         .create();
 
-                return gson.fromJson(json, TaskListResponse.class);
+                return gson.fromJson(json, new TypeToken<Response<List<Assignment>>>(){}.getType());
             }
         };
     }

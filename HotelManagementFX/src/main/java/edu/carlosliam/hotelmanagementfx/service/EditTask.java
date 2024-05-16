@@ -12,33 +12,29 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
 import java.time.LocalDate;
-import java.util.List;
 
-public class PostTaskAssigned extends Service<Response<Assignment>> {
-    private Assignment assignment;
-    private String employeeId;
+public class EditTask extends Service<Response<Assignment>> {
+    private final String id;
+    private final Assignment assignment;
 
-    public PostTaskAssigned(Assignment assignment, String employeeId) {
+    public EditTask(String id, Assignment assignment) {
+        this.id = id;
         this.assignment = assignment;
-        this.employeeId = employeeId;
     }
 
     @Override
     protected Task<Response<Assignment>> createTask() {
         return new Task<Response<Assignment>>() {
             @Override
-            protected Response<Assignment> call() throws Exception {
+            protected Response<Assignment> call() {
                 Gson gson = new GsonBuilder()
                         .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
                         .create();
 
-                System.out.println("JSON del trabajo:");
-                System.out.println(gson.toJson(assignment));
-                System.out.println();
-
                 String json = ServiceUtils.getResponse(
-                        ServiceUtils.SERVER + "/api/trabajos/" + employeeId,
-                        gson.toJson(assignment), "POST");
+                        ServiceUtils.SERVER + "/api/trabajos/" + id,
+                        gson.toJson(assignment),
+                        "PUT");
 
                 return gson.fromJson(json, new TypeToken<Response<Assignment>>(){}.getType());
             }
