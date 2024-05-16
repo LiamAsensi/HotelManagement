@@ -13,10 +13,9 @@ import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
 import edu.carlosliam.hotelmanagementfx.model.data.Employee;
 
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
 import java.util.List;
 
-public class PdfCreator {
+public class PaycheckPdfCreator {
     private static final String PAYCHECK_FOLDER = "paychecks/";
     private static final float PRICE_PER_HOUR = 8.28F;
     private final String destination;
@@ -25,8 +24,12 @@ public class PdfCreator {
     private final String endDate;
     private final List<Assignment> assignments;
 
-    public PdfCreator(Employee employee, String startDate,
-                      String endDate, List<Assignment> assignments) {
+    public String getDestination() {
+        return destination;
+    }
+
+    public PaycheckPdfCreator(Employee employee, String startDate,
+                              String endDate, List<Assignment> assignments) {
         this.destination = PAYCHECK_FOLDER + "paycheck-employee" + employee.getId() +
         "_" + startDate + "_" + endDate + ".pdf";
         this.employee = employee;
@@ -79,10 +82,12 @@ public class PdfCreator {
 
         Table taskTable = new Table(new float[]{1, 1});
         taskTable.setBorder(Border.NO_BORDER);
+        taskTable.setWidth(UnitValue.createPercentValue(100));
 
         taskTable.addCell(createCell("Assignment " + assignment.getCodTask(), TextAlignment.LEFT));
         taskTable.addCell(createCell("Type: " + assignment.getType(), TextAlignment.RIGHT));
-        taskTable.addCell(createCell(assignment.getDescription(), TextAlignment.RIGHT));
+        taskTable.addCell(createCell(assignment.getDescription(), TextAlignment.LEFT));
+        taskTable.addCell(createCell("", TextAlignment.LEFT));
 
         cell.add(taskTable);
 

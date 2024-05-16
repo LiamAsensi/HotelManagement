@@ -2,14 +2,12 @@ package edu.carlosliam.hotelmanagementfx.controller;
 
 import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
 import edu.carlosliam.hotelmanagementfx.adapter.EmployeeListViewCell;
-import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
 import edu.carlosliam.hotelmanagementfx.service.DeleteEmployee;
 import edu.carlosliam.hotelmanagementfx.service.GetEmployees;
 import edu.carlosliam.hotelmanagementfx.model.data.Employee;
 import edu.carlosliam.hotelmanagementfx.service.GetEmployeesScheduled;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
-import edu.carlosliam.hotelmanagementfx.utils.PdfCreator;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

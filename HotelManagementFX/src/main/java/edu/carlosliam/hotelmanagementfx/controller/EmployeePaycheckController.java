@@ -3,7 +3,7 @@ package edu.carlosliam.hotelmanagementfx.controller;
 import edu.carlosliam.hotelmanagementfx.service.GetTasksBetweenDates;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
-import edu.carlosliam.hotelmanagementfx.utils.PdfCreator;
+import edu.carlosliam.hotelmanagementfx.utils.PaycheckPdfCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 
@@ -38,13 +38,15 @@ public class EmployeePaycheckController {
                     if (!getTasksBetweenDates.getValue().isError()) {
                         System.out.println("Generating paycheck for employee with ID: " + employee.getId());
 
-                        PdfCreator paycheck = new PdfCreator(
+                        PaycheckPdfCreator paycheck = new PaycheckPdfCreator(
                                 employee,
                                 formatter.format(dpStartDate.getValue()),
                                 formatter.format(dpEndDate.getValue()),
                                 getTasksBetweenDates.getValue().getResult()
                         );
                         paycheck.createPdf();
+
+                        // TODO: Mandar correo con la nómina
                     } else {
                         MessageUtils.showError("Error getting tasks", getTasksBetweenDates.getValue().getErrorMessage());
                     }
