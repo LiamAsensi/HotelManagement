@@ -2,6 +2,9 @@ module edu.carlosliam.hotelmanagementfx {
     requires javafx.controls;
     requires javafx.fxml;
     requires com.google.gson;
+    requires org.slf4j;
+    requires kernel;
+    requires layout;
 
     requires org.controlsfx.controls;
     requires net.synedra.validatorfx;
