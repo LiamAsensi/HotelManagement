@@ -9,6 +9,7 @@ module edu.carlosliam.hotelmanagementfx {
     requires org.controlsfx.controls;
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
+    requires jakarta.mail;
 
     opens edu.carlosliam.hotelmanagementfx to javafx.fxml;
     exports edu.carlosliam.hotelmanagementfx;

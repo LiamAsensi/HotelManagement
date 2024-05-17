@@ -1,6 +1,7 @@
 package edu.carlosliam.hotelmanagementfx.controller;
 
 import edu.carlosliam.hotelmanagementfx.service.GetTasksBetweenDates;
+import edu.carlosliam.hotelmanagementfx.utils.MailUtils;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
 import edu.carlosliam.hotelmanagementfx.utils.PaycheckPdfCreator;
@@ -26,6 +27,7 @@ public class EmployeePaycheckController {
             MessageUtils.showError("Invalid input", "You need to select both dates!");
         } else {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MM-yyyy");
+            MailUtils mailSender = new MailUtils();
 
             EmployeeManagerController.employeeObservableList.forEach(employee -> {
                 GetTasksBetweenDates getTasksBetweenDates = new GetTasksBetweenDates(
@@ -46,7 +48,13 @@ public class EmployeePaycheckController {
                         );
                         paycheck.createPdf();
 
-                        // TODO: Mandar correo con la nómina
+                        mailSender.sendEmailWithAttachment(
+                                employee,
+                                "Paycheck (" + formatter.format(dpStartDate.getValue()) +
+                                        " / " + formatter.format(dpEndDate.getValue()) + ")",
+                                "Here's the paycheck of your recent work.",
+                                paycheck.getDestination()
+                        );
                     } else {
                         MessageUtils.showError("Error getting tasks", getTasksBetweenDates.getValue().getErrorMessage());
                     }
