@@ -32,7 +32,7 @@ public class TaskManagerController {
 
     private static DeleteTask deleteTask;
 
-    private GetTasks getTasks;
+    private static GetTasks getTasks;
 
     public static ObservableList<Assignment> assignmentObservableList;
 
@@ -103,7 +103,10 @@ public class TaskManagerController {
     }
 
     // Update the list of tasks
-    private void updateItems() {
+    public static void updateItems() {
+        if (assignmentObservableList == null) {
+            assignmentObservableList = FXCollections.observableArrayList();
+        }
         assignmentObservableList.clear();
         getTasks = new GetTasks();
         getTasks.start();
