@@ -1,14 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import edu.carlosliam.hotelmanagementfx.controller.HMToolBar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.AssignmentManagerController">
     <top>
-        <HMToolBar fx:id="toolbar" BorderPane.alignment="CENTER"/>
+
     </top>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="50.0" left="40.0" right="40.0" top="30.0" />
+            </BorderPane.margin>
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="1000.0">
+                    <children>
+                        <Label prefHeight="53.0" prefWidth="370.0" text="Assignament Manager">
+                            <font>
+                                <Font size="36.0" />
+                            </font>
+                        </Label>
+                  <Region prefHeight="85.0" prefWidth="8.0" HBox.hgrow="ALWAYS" />
+                          <Button fx:id="btnEditTask" mnemonicParsing="false">
+                              <graphic>
+                                  <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
+                                      <children>
+                                          <FontIcon iconLiteral="mdi2p-pencil-box-multiple" iconSize="35" />
+                                          <Label text="Unassign">
+                                              <font>
+                                                  <Font name="System Bold" size="16.0" />
+                                              </font>
+                                          </Label>
+                                      </children>
+                                      <padding>
+                                          <Insets bottom="5.0" top="5.0" />
+                                      </padding>
+                                  </VBox>
+                              </graphic>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                          </Button>
+                  <Button fx:id="btnEditTask1" mnemonicParsing="false">
+                     <graphic>
+                        <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
+                           <children>
+                              <FontIcon iconLiteral="mdi2p-pencil-box-multiple" iconSize="35" />
+                              <Label text="Assign">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnEditTask2" mnemonicParsing="false">
+                     <graphic>
+                        <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
+                           <children>
+                              <FontIcon iconLiteral="mdi2p-pencil-box-multiple" iconSize="35" />
+                              <Label text="Confirn ">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" maxHeight="50.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="NEVER">
+                                    <children>
+                                        <Label text="Tasks">
+                                            <font>
+                                                <Font size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <FontIcon iconLiteral="mdi2a-account-hard-hat" iconSize="20" text="󰖵" />
+                                        <Region prefHeight="50.0" prefWidth="77.0" HBox.hgrow="ALWAYS" />
+                                        <ChoiceBox prefWidth="150.0" />
+                                        <ChoiceBox prefWidth="150.0" />
+                                    </children>
+                                </HBox>
+                                <ListView fx:id="lvTasks" prefHeight="241.0" prefWidth="529.0" VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+                        <VBox id="context-buttons" alignment="CENTER" prefHeight="497.0" prefWidth="445.0" spacing="30.0">
+                            <children>
+                        <Label prefHeight="0.0" prefWidth="453.0" text="List Assigned Employees (To Cofirm)">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ListView fx:id="lvAssignmentEmployee" prefHeight="538.0" prefWidth="435.0">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </ListView>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
 </BorderPane>
