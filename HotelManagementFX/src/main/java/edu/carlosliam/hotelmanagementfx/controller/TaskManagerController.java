@@ -2,7 +2,6 @@ package edu.carlosliam.hotelmanagementfx.controller;
 
 import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
 import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
-import edu.carlosliam.hotelmanagementfx.service.DeleteEmployee;
 import edu.carlosliam.hotelmanagementfx.service.DeleteTask;
 import edu.carlosliam.hotelmanagementfx.service.GetTasks;
 import edu.carlosliam.hotelmanagementfx.adapter.TaskListViewCell;
@@ -48,7 +47,7 @@ public class TaskManagerController {
         disableButtons(true);
 
         // Update the list of employees
-        EmployeeManagerController.updateItems();
+        EmployeeManagerController.forceUpdateOfItems();
 
         // Update the list of tasks
         updateItems();

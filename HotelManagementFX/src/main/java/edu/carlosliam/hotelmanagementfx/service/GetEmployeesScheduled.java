@@ -10,12 +10,12 @@ import javafx.concurrent.Task;
 
 import java.util.List;
 
-public class GetEmployeesScheduled extends ScheduledService<List<Employee>> {
+public class GetEmployeesScheduled extends ScheduledService<Response<List<Employee>>> {
     @Override
-    protected Task<List<Employee>> createTask() {
+    protected Task<Response<List<Employee>>> createTask() {
         return new Task<>() {
             @Override
-            protected List<Employee> call() {
+            protected Response<List<Employee>> call() {
                 String json = ServiceUtils.getResponse(
                         ServiceUtils.SERVER + "/api/trabajadores",
                         null,
@@ -24,10 +24,8 @@ public class GetEmployeesScheduled extends ScheduledService<List<Employee>> {
 
                 Gson gson = new Gson();
 
-                Response<List<Employee>> response = gson.fromJson(json,
+                return gson.fromJson(json,
                         new TypeToken<Response<List<Employee>>>(){}.getType());
-
-                return response.getResult();
             }
         };
     }

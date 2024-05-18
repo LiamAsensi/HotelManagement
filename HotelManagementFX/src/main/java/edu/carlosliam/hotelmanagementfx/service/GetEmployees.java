@@ -8,7 +8,6 @@ import edu.carlosliam.hotelmanagementfx.utils.ServiceUtils;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 public class GetEmployees extends Service<Response<List<Employee>>> {
