@@ -14,7 +14,7 @@
 
 <?import edu.carlosliam.hotelmanagementfx.controller.HMToolBar?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #FFF5E6;" stylesheets="@../css/manager.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.EmployeeManagerController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #FFF5E6;" stylesheets="@../css/manager.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.EmployeeManagerController">
    <top>
       <HMToolBar fx:id="toolbar"/>
    </top>
@@ -24,17 +24,78 @@
             <Insets bottom="50.0" left="40.0" right="40.0" top="30.0" />
          </BorderPane.margin>
          <children>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+            <HBox id="context-buttons" alignment="CENTER_LEFT" prefWidth="200.0">
                <children>
                   <Label text="Employee Manager">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" styleClass="transparent" onAction="#addEmployee">
+                  <Button mnemonicParsing="false" onAction="#addEmployee" styleClass="transparent">
                      <graphic>
                         <FontIcon iconLiteral="mdi2p-plus-box" iconSize="32" />
                      </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Region prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Button onAction="#generatePaycheck" mnemonicParsing="false">
+                     <graphic>
+                        <VBox alignment="CENTER" prefWidth="100.0" spacing="5.0">
+                           <children>
+                              <FontIcon iconLiteral="mdi2f-file-document" iconSize="35" />
+                              <Label text="Paychecks">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button onAction="#generateEmployeeReport" mnemonicParsing="false">
+                     <graphic>
+                        <VBox alignment="CENTER" prefWidth="100.0" spacing="5.0">
+                           <children>
+                              <FontIcon iconLiteral="mdi2f-file-document" iconSize="35" />
+                              <Label text="Employee Report">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button onAction="#generateExpenseReport" mnemonicParsing="false">
+                     <graphic>
+                        <VBox alignment="CENTER" prefWidth="100.0" spacing="5.0">
+                           <children>
+                              <FontIcon iconLiteral="mdi2f-file-document" iconSize="35" />
+                              <Label text="Expense Report">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </Button>
                </children>
             </HBox>
@@ -51,8 +112,7 @@
                               </Label>
                               <FontIcon iconLiteral="mdi2a-account-hard-hat" iconSize="20" />
                               <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                              <ChoiceBox prefWidth="150.0" />
-                              <ChoiceBox prefWidth="150.0" />
+                              <ChoiceBox fx:id="cbProfession" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <ListView fx:id="lvEmployees" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
@@ -60,24 +120,7 @@
                   </VBox>
                   <VBox id="context-buttons" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="30.0">
                      <children>
-                        <Button fx:id="btnPaycheck" mnemonicParsing="false">
-                           <graphic>
-                              <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
-                                 <children>
-                                    <FontIcon iconLiteral="mdi2f-file-document" iconSize="35" />
-                                    <Label text="Generate paychecks">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="5.0" top="5.0" />
-                                 </padding>
-                              </VBox>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnEditEmployee" mnemonicParsing="false">
+                        <Button onAction="#editEmployee" fx:id="btnEditEmployee" mnemonicParsing="false">
                            <graphic>
                               <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
                                  <children>
@@ -94,7 +137,7 @@
                               </VBox>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnFire" id="fire-button" mnemonicParsing="false">
+                        <Button id="fire-button" onAction="#fireEmployee" fx:id="btnFire" mnemonicParsing="false">
                            <graphic>
                               <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
                                  <children>
