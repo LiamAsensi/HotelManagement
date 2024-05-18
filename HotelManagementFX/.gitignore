@@ -37,5 +37,6 @@ build/
 ### Mac OS ###
 .DS_Store
 
-## Nóminas ##
+## PDFs ##
 paychecks/
+reports/
