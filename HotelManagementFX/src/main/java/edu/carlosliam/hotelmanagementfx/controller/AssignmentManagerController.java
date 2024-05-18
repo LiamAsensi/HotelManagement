@@ -5,7 +5,6 @@ import edu.carlosliam.hotelmanagementfx.adapter.TaskListViewCell;
 import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
 import edu.carlosliam.hotelmanagementfx.model.data.Employee;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
-import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,9 +36,9 @@ public class AssignmentManagerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         HMToolBar.disableButton(toolbar.btnGoToAssignments);
-        lvAssignmentEmployee.setItems(assignmentEmployee);
+//        lvAssignmentEmployee.setItems(assignmentEmployee);
 
-        EmployeeManagerController.updateItems();
+        EmployeeManagerController.forceUpdateOfItems();
         TaskManagerController.updateItems();
 
         lvTasks.setItems(TaskManagerController.assignmentObservableList);
