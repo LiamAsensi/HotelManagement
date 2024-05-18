@@ -1,10 +1,13 @@
 package edu.carlosliam.hotelmanagementfx.model.data;
 
 import com.google.gson.annotations.SerializedName;
+import edu.carlosliam.hotelmanagementfx.controller.EmployeeManagerController.ProfessionFilter;
+
+import java.util.HashMap;
 
 public class Employee {
     @SerializedName("idTrabajador")
-    private String id;
+    private final String id;
     @SerializedName("dni")
     private String dni;
     @SerializedName("nombre")
@@ -16,6 +19,22 @@ public class Employee {
     @SerializedName("contraseña")
     private String password;
     private String email;
+
+    public static HashMap<String, String> professions = new HashMap<>() {{
+        put("limpieza", "Cleaner");
+        put("gestion", "Manager");
+        put("electricidad", "Electrician");
+        put("fontaneria", "Plumber");
+        put("carpinteria", "Carpenter");
+    }};
+
+    public static HashMap<ProfessionFilter, String> professionsEnum = new HashMap<>() {{
+        put(ProfessionFilter.CLEANER, "limpieza");
+        put(ProfessionFilter.MANAGER, "gestion");
+        put(ProfessionFilter.ELECTRICIAN, "electricidad");
+        put(ProfessionFilter.PLUMBER, "fontaneria");
+        put(ProfessionFilter.CARPENTER, "carpinteria");
+    }};
 
     public Employee(String id, String dni, String name, String surnames, String profession, String password, String email) {
         this.id = id;
@@ -82,5 +101,15 @@ public class Employee {
     @Override
     public String toString() {
         return String.format("%s %s - %s - %s - %s", name, surnames, dni, profession, email);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + id.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Employee && id.equals(((Employee) obj).id);
     }
 }
