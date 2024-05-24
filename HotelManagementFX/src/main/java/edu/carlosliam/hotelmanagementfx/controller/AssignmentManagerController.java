@@ -4,7 +4,10 @@ import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
 import edu.carlosliam.hotelmanagementfx.adapter.TaskListViewCell;
 import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
 import edu.carlosliam.hotelmanagementfx.model.data.Employee;
+import edu.carlosliam.hotelmanagementfx.model.data.EmployeeWithAssignment;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +21,10 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class AssignmentManagerController implements Initializable {
+    public static ObservableList<EmployeeWithAssignment> employeeWithAssignments =
+            FXCollections.observableArrayList();
+    public Employee employeeSelected;
+
     @FXML
     private HMToolBar toolbar;
 
@@ -25,18 +32,12 @@ public class AssignmentManagerController implements Initializable {
     private ListView<Assignment> lvTasks;
 
     @FXML
-    private ListView<HashMap<Assignment, Employee>> lvAssignmentEmployee;
-
-    public  Employee employeeSelected;
-
-    public static ObservableMap<Assignment, Employee> assignmentEmployee;
-
-
+    private ListView<EmployeeWithAssignment> lvAssignmentEmployee;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         HMToolBar.disableButton(toolbar.btnGoToAssignments);
-//        lvAssignmentEmployee.setItems(assignmentEmployee);
+        lvAssignmentEmployee.setItems(employeeWithAssignments);
 
         EmployeeManagerController.forceUpdateOfItems();
         TaskManagerController.updateItems();
@@ -65,7 +66,8 @@ public class AssignmentManagerController implements Initializable {
         ModalUtils.openModalParent(parent);
 
         if (employeeSelected != null) {
-            assignmentEmployee.put(assignmentSelected, employeeSelected);
+            EmployeeWithAssignment ewa = new EmployeeWithAssignment(assignmentSelected, employeeSelected);
+            employeeWithAssignments.add(ewa);
         }
     }
 }
