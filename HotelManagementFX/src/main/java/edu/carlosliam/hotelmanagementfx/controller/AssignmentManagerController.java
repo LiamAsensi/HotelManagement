@@ -5,6 +5,7 @@ import edu.carlosliam.hotelmanagementfx.adapter.TaskListViewCell;
 import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
 import edu.carlosliam.hotelmanagementfx.model.data.Employee;
 import edu.carlosliam.hotelmanagementfx.model.data.EmployeeWithAssignment;
+import edu.carlosliam.hotelmanagementfx.service.AssignTaskToEmployee;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import javafx.scene.control.ListView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AssignmentManagerController implements Initializable {
@@ -33,6 +35,8 @@ public class AssignmentManagerController implements Initializable {
 
     @FXML
     private ListView<EmployeeWithAssignment> lvAssignmentEmployee;
+
+    private AssignTaskToEmployee assignTaskToEmployee;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -67,5 +71,16 @@ public class AssignmentManagerController implements Initializable {
             EmployeeWithAssignment ewa = new EmployeeWithAssignment(assignmentSelected, employeeSelected);
             employeeWithAssignments.add(ewa);
         }
+    }
+
+    @FXML
+    public void confirmTasks() throws IOException {
+        employeeWithAssignments.forEach(e -> {
+            assignTaskToEmployee = new AssignTaskToEmployee(e.getAssignment()
+                    .getCodTask(), e.getAssignment(), e.getEmployee().getId());
+            assignTaskToEmployee.start();
+        });
+
+        employeeWithAssignments.clear();
     }
 }
