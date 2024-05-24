@@ -2,6 +2,7 @@ package edu.carlosliam.hotelmanagementfx.adapter;
 
 import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
 import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
+import edu.carlosliam.hotelmanagementfx.model.data.EmployeeWithAssignment;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
@@ -72,7 +73,7 @@ public class TaskListViewCell extends ListCell<Assignment> {
 
     private void bind(Assignment assignment) {
         lblName.setText(assignment.getDescription());
-        lblType.setText(assignment.getType());
+        lblType.setText(EmployeeWithAssignment.professions.get(assignment.getType()));
         if (assignment.getEmployee() != null && assignment.getDateEnd() != null) {
             lblStatus.setText("Finished");
             lblEmployeeName.setText(assignment.getEmployee().getName() + " " + assignment.getEmployee().getSurnames());

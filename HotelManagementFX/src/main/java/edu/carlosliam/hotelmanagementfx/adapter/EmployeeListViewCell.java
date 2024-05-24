@@ -2,6 +2,7 @@ package edu.carlosliam.hotelmanagementfx.adapter;
 
 import edu.carlosliam.hotelmanagementfx.HotelManagementApplication;
 import edu.carlosliam.hotelmanagementfx.model.data.Employee;
+import edu.carlosliam.hotelmanagementfx.model.data.EmployeeWithAssignment;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
@@ -65,7 +66,7 @@ public class EmployeeListViewCell extends ListCell<Employee> {
 
     private void bind(Employee employee) {
         lblName.setText(employee.getName() + " " + employee.getSurnames());
-        lblProfession.setText(employee.getProfession());
+        lblProfession.setText(EmployeeWithAssignment.professions.get(employee.getProfession()));
         lblEmail.setText(employee.getEmail());
         lblStatus.setText("Available");
         lblDni.setText(employee.getDni());

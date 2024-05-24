@@ -1,6 +1,19 @@
 package edu.carlosliam.hotelmanagementfx.model.data;
 
+import java.util.HashMap;
+
 public class EmployeeWithAssignment {
+    public static HashMap<String, String> professions;
+    static {
+        professions = new HashMap<>();
+        professions.put("electricidad", "Electricity");
+        professions.put("limpieza", "Cleaning");
+        professions.put("gestion", "Management");
+        professions.put("fontaneria", "Plumber");
+        professions.put("carpinteria", "Carpentry");
+        professions.put("pintura", "Painting");
+        professions.put("construccion", "Construction");
+    }
     private Assignment assignment;
     private Employee employee;
 
