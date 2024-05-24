@@ -20,13 +20,10 @@ public class AssignTaskToEmployee extends Service<Response<Assignment>> {
 
     private final String employeeId;
 
-    private final Employee employee;
-
-    public AssignTaskToEmployee(String taskId, Assignment assignment, String employeeId, Employee employee) {
+    public AssignTaskToEmployee(String taskId, Assignment assignment, String employeeId) {
         this.taskId = taskId;
         this.assignment = assignment;
         this.employeeId = employeeId;
-        this.employee = employee;
     }
 
     @Override

@@ -71,7 +71,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnEditTask2" mnemonicParsing="false">
+                  <Button fx:id="btnEditTask2" mnemonicParsing="false" onAction="#confirmTasks">
                      <graphic>
                         <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
                            <children>
