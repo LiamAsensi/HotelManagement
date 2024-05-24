@@ -81,7 +81,7 @@ public class TaskManagerController {
 
     private void editTask() throws IOException {
         Assignment task = lvTasks.getSelectionModel().getSelectedItem();
-        if(task != null) {
+        if(task != null && task.getEmployee() == null) {
             FXMLLoader fxmlLoader = new FXMLLoader(HotelManagementApplication.class.getResource("layout/task-new-view.fxml"));
             Parent parent = fxmlLoader.load();
 
@@ -127,7 +127,7 @@ public class TaskManagerController {
     // Delete task selected
     private void deleteTask() {
         Assignment assignment = lvTasks.getSelectionModel().getSelectedItem();
-        if(assignment != null) {
+        if(assignment != null && assignment.getEmployee() == null) {
             deleteTask = new DeleteTask(assignment.getCodTask());
             deleteTask.start();
 
