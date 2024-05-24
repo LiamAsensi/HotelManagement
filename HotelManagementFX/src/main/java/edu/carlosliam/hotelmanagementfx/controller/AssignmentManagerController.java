@@ -59,11 +59,9 @@ public class AssignmentManagerController implements Initializable {
 
         AssignNewController assignNewController = fxmlLoader.getController();
 
-        ModalUtils.modalStage.setOnCloseRequest(e -> {
-            employeeSelected = assignNewController.getEmployeeSelected();
-        });
-
         ModalUtils.openModalParent(parent);
+
+        employeeSelected = assignNewController.getEmployeeSelected();
 
         if (employeeSelected != null) {
             EmployeeWithAssignment ewa = new EmployeeWithAssignment(assignmentSelected, employeeSelected);

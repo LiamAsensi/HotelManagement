@@ -1,18 +1,31 @@
 package edu.carlosliam.hotelmanagementfx.controller;
 
 import edu.carlosliam.hotelmanagementfx.model.data.Employee;
+import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 
 public class AssignNewController {
     @FXML
-    private ChoiceBox<Employee> cbEmployee;
+    private ChoiceBox<Employee> cbEmployees;
+    private Employee selectedEmployee;
 
     public void initialize() {
-        cbEmployee.setItems(EmployeeManagerController.employeeObservableList);
+        cbEmployees.setItems(EmployeeManagerController.employeeObservableList);
     }
 
     public Employee getEmployeeSelected() {
-        return cbEmployee.getSelectionModel().getSelectedItem();
+        return this.selectedEmployee;
+    }
+
+    @FXML
+    public void close() {
+        ModalUtils.modalStage.close();
+    }
+
+    @FXML
+    private void assignEmployee() {
+        selectedEmployee = cbEmployees.getSelectionModel().getSelectedItem();
+        close();
     }
 }
