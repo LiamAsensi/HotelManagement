@@ -3,7 +3,6 @@ package edu.carlosliam.hotelmanagementfx.model.data;
 import com.google.gson.annotations.SerializedName;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Assignment {
 
@@ -93,11 +92,20 @@ public class Assignment {
     @Override
     public String toString() {
         return "Task{" +
-                ", description='" + description + '\'' +
-                ", type='" + type + '\'' +
+                "description='" + description + '\'' +
                 ", dateStart=" + dateStart +
                 ", dateEnd=" + dateEnd +
-                ", priority=" + priority +
+                ", employee=" + (employee == null ? "unassigned" : employee.getName()) +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + codTask.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Assignment && codTask.equals(((Assignment) obj).codTask);
     }
 }
