@@ -8,7 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -37,10 +40,7 @@ public class TaskListViewCell extends ListCell<Assignment> {
     private Label lblDateEnd;
 
     @FXML
-    private Label lblPriority;
-
-    @FXML
-    private Label lblStatus;
+    private FontIcon fiPriority;
 
     private FXMLLoader fxmlLoader;
 
@@ -74,23 +74,29 @@ public class TaskListViewCell extends ListCell<Assignment> {
     private void bind(Assignment assignment) {
         lblName.setText(assignment.getDescription());
         lblType.setText(EmployeeWithAssignment.professions.get(assignment.getType()));
-        if (assignment.getEmployee() != null && assignment.getDateEnd() != null) {
-            lblStatus.setText("Finished");
-            lblEmployeeName.setText(assignment.getEmployee().getName() + " " + assignment.getEmployee().getSurnames());
-        } else if (assignment.getEmployee() != null && assignment.getDateEnd() == null) {
-            lblStatus.setText("Assigned");
+
+        if (assignment.getEmployee() != null) {
             lblEmployeeName.setText(assignment.getEmployee().getName() + " " + assignment.getEmployee().getSurnames());
         } else {
-            lblStatus.setText("Unassigned");
+            lblEmployeeName.setText("Unassigned");
         }
 
-        if (assignment.getDateStart() != null) {
-            lblDate.setText(assignment.getDateStart().toString());
-        } else {
-            lblDate.setText("Not started");
-        }
+        lblDate.setText(assignment.getDateStart().toString());
 
-        lblPriority.setText(assignment.getPriority() + "");
+        switch (assignment.getPriority()) {
+            case 1:
+                fiPriority.setIconColor(Color.GRAY);
+                break;
+            case 2:
+                fiPriority.setIconColor(Color.GREEN);
+                break;
+            case 3:
+                fiPriority.setIconColor(Color.ORANGE);
+                break;
+            case 4:
+                fiPriority.setIconColor(Color.RED);
+                break;
+        }
 
         setText(null);
         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
