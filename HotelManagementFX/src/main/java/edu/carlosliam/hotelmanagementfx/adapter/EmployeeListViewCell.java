@@ -32,9 +32,6 @@ public class EmployeeListViewCell extends ListCell<Employee> {
     @FXML
     private Label lblProfession;
 
-    @FXML
-    private Label lblStatus;
-
     private FXMLLoader fxmlLoader;
 
     @Override
@@ -68,7 +65,6 @@ public class EmployeeListViewCell extends ListCell<Employee> {
         lblName.setText(employee.getName() + " " + employee.getSurnames());
         lblProfession.setText(EmployeeWithAssignment.professions.get(employee.getProfession()));
         lblEmail.setText(employee.getEmail());
-        lblStatus.setText("Available");
         lblDni.setText(employee.getDni());
 
         setText(null);
