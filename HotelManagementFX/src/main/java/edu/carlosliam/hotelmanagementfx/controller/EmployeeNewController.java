@@ -6,6 +6,7 @@ import edu.carlosliam.hotelmanagementfx.service.EditEmployee;
 import edu.carlosliam.hotelmanagementfx.service.PostEmployee;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
+import edu.carlosliam.hotelmanagementfx.utils.NotificationUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ValidationUtils;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -108,11 +109,9 @@ public class EmployeeNewController implements Initializable {
                 System.out.println(postEmployee.getValue().getResult());
 
                 Platform.runLater(() ->
-                    Notifications.create()
-                        .title("Employee added")
-                        .text("The employee {name} has been added successfully"
-                                .replace("{name}", tfName.getText() + " " + tfSurname.getText()))
-                        .showConfirm()
+                    NotificationUtils.showNotificationSuccess("Employee added",
+                            "The employee {name} has been added successfully"
+                            .replace("{name}", tfName.getText() + " " + tfSurname.getText()))
                 );
 
                 ModalUtils.modalStage.close();
