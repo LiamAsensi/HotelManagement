@@ -1,0 +1,14 @@
+#mainContainer {
+    -fx-background-color: #FFF5E6;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+#close {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+#close .ikonli-font-icon {
+    -fx-icon-color: #BF2222;
+}
