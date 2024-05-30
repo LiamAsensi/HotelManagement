@@ -42,6 +42,7 @@ public class ModalUtils {
         modalStage.setResizable(false);
 
         Scene scene = new Scene(parent);
+        scene.setFill(Color.TRANSPARENT);
         modalStage.setScene(scene);
 
         HotelManagementApplication.primaryStage.getScene().getRoot().setEffect(new ColorAdjust(0, -0.5, -0.5, 0));

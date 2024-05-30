@@ -2,17 +2,28 @@ package edu.carlosliam.hotelmanagementfx.controller;
 
 import edu.carlosliam.hotelmanagementfx.model.data.Assignment;
 import edu.carlosliam.hotelmanagementfx.model.data.Employee;
+import edu.carlosliam.hotelmanagementfx.model.data.EmployeeWithAssignment;
+import edu.carlosliam.hotelmanagementfx.model.data.Room;
 import edu.carlosliam.hotelmanagementfx.service.EditTask;
+import edu.carlosliam.hotelmanagementfx.service.GetDirtyRoom;
 import edu.carlosliam.hotelmanagementfx.service.PostTask;
 import edu.carlosliam.hotelmanagementfx.service.PostTaskAssigned;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
+import edu.carlosliam.hotelmanagementfx.utils.NotificationUtils;
+import edu.carlosliam.hotelmanagementfx.utils.ValidationUtils;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 
-public class TaskNewController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class TaskNewController implements Initializable {
     @FXML
     private TextField tfId;
 
@@ -36,24 +47,29 @@ public class TaskNewController {
 
     @FXML
     private ChoiceBox<Employee> cbEmployee;
+
+    @FXML
+    private ChoiceBox<Room> cbRoom;
+
+    @FXML
+    private CheckBox cbCleaning;
+
+    @FXML
+    private Button btnSave;
+
+    @FXML
+    private HBox btnSaveContainer;
+
     private PostTask postTask;
 
     private EditTask editTask;
 
     private PostTaskAssigned postTaskAssigned;
 
+    private GetDirtyRoom getDirtyRoom;
+
     private Assignment taskEdit;
-
-    public void initialize() {
-
-        cbPriority.getItems().addAll(1, 2, 3, 4);
-
-        tfType.getItems().addAll("Electricidad", "Limpieza", "Gestion", "Fontaneria", "Carpinteria");
-
-        cbEmployee.setItems(EmployeeManagerController.employeeObservableList);
-    }
-
-
+    private ValidationSupport validator;
 
     @FXML
     public void close() {
@@ -65,7 +81,6 @@ public class TaskNewController {
         if (taskEdit == null) {
             addTask();
         } else {
-            System.out.println("Edit task");
             editTask();
         }
     }
@@ -75,7 +90,7 @@ public class TaskNewController {
 
         tfId.setText(task.getCodTask());
         tfDescription.setText(task.getDescription());
-        tfType.setValue(task.getType());
+        tfType.setValue(EmployeeWithAssignment.professions.get(task.getType()));
         cbEmployee.setValue(task.getEmployee());
         cbPriority.setValue(task.getPriority());
         tfTime.setText(String.valueOf(task.getEstimatedTime()));
@@ -84,6 +99,7 @@ public class TaskNewController {
 
         tfId.setDisable(true);
         cbEmployee.setDisable(true);
+        cbCleaning.setVisible(false);
         cbEmployee.setVisible(false);
     }
 
@@ -97,7 +113,7 @@ public class TaskNewController {
             Assignment task = new Assignment(
                     taskEdit.getCodTask(),
                     tfDescription.getText(),
-                    tfType.getValue(),
+                    EmployeeWithAssignment.professionsInverse.get(tfType.getValue()),
                     dpSd.getValue(),
                     dpFd.getValue(),
                     taskEdit.getEmployee(),
@@ -129,7 +145,7 @@ public class TaskNewController {
             Assignment assignment = new Assignment(
                     tfId.getText(),
                     tfDescription.getText(),
-                    tfType.getValue(),
+                    EmployeeWithAssignment.professionsInverse.get(tfType.getValue()),
                     dpSd.getValue(),
                     dpFd.getValue(),
                     null,
@@ -144,6 +160,13 @@ public class TaskNewController {
                 postTask.setOnSucceeded(e-> {
                     if (!postTask.getValue().isError()) {
                         System.out.println(postTask.getValue().getResult());
+
+                        Platform.runLater(() ->
+                            NotificationUtils.showNotificationSuccess("Task added",
+                                "The task {name} has been added successfully"
+                                .replace("{name}", tfDescription.getText()))
+                        );
+
                         ModalUtils.modalStage.close();
                     } else {
                         MessageUtils.showError("Error posting task", postTask.getValue().getErrorMessage());
@@ -156,6 +179,14 @@ public class TaskNewController {
                 postTaskAssigned.setOnSucceeded(e-> {
                     if (!postTaskAssigned.getValue().isError()) {
                         System.out.println(postTaskAssigned.getValue().getResult());
+
+                        Platform.runLater(() ->
+                            NotificationUtils.showNotificationSuccess("Task added",
+                                "The task {name} has been added successfully with the employee {employee}"
+                                .replace("{name}", tfDescription.getText())
+                                .replace("{employee}", cbEmployee.getValue().getName()))
+                        );
+
                         ModalUtils.modalStage.close();
                     } else {
                         MessageUtils.showError("Error posting task", postTaskAssigned.getValue().getErrorMessage());
@@ -171,5 +202,105 @@ public class TaskNewController {
                 tfId.getText().isBlank() ||
                 tfDescription.getText().isBlank() ||
                 dpSd.getValue().toString().isBlank();
+    }
+
+    private void initializeDirtyRooms() {
+        getDirtyRoom = new GetDirtyRoom();
+        getDirtyRoom.start();
+
+        getDirtyRoom.setOnSucceeded(e-> {
+            cbRoom.getItems().addAll(getDirtyRoom.getValue());
+        });
+    }
+
+    private void addValidations() {
+        // Description validation
+        validator.registerValidator(
+                tfDescription,
+                Validator.createEmptyValidator("Description is required")
+        );
+        validator.registerValidator(
+                tfDescription,
+                Validator.<String>createPredicateValidator(
+                        name -> name.length() >= 2 && name.length() < 500,
+                        "Name must be between 2 and 500 characters"
+                )
+        );
+
+        // Task ID validation
+        validator.registerValidator(
+                tfId,
+                Validator.createEmptyValidator("Task ID is required")
+        );
+        validator.registerValidator(
+                tfId,
+                Validator.<String>createPredicateValidator(
+                        id -> !id.isEmpty() && id.length() < 5,
+                        "Employee ID must be between 1 and 5 characters"
+                )
+        );
+
+        // Estimated time validation
+        validator.registerValidator(
+                tfTime,
+                Validator.createRegexValidator(
+                        "Time is invalid",
+                        "^$|^[0-9]+(\\.[0-9]+)?$",
+                        null
+                )
+        );
+
+        // Priority validation
+        validator.registerValidator(
+                cbPriority,
+                Validator.createEmptyValidator("Priority is required")
+        );
+
+        // Type validation
+        validator.registerValidator(
+                tfType,
+                Validator.createEmptyValidator("Type is required")
+        );
+
+        // Start date validation
+        validator.registerValidator(
+                dpSd,
+                Validator.createEmptyValidator("Start date is required")
+        );
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        cbPriority.getItems().addAll(1, 2, 3, 4);
+        validator = new ValidationSupport();
+        validator.setErrorDecorationEnabled(true);
+
+        tfType.getItems().addAll(EmployeeWithAssignment.professions.values());
+        tfType.getItems().remove("Cleaning");
+
+        cbEmployee.setItems(EmployeeManagerController.employeeObservableList);
+
+        initializeDirtyRooms();
+        cbRoom.setVisible(false);
+
+        cbCleaning.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            cbRoom.setVisible(newValue);
+            tfDescription.setDisable(newValue);
+            tfType.setDisable(newValue);
+
+            if (newValue) {
+                tfType.setValue("Cleaning");
+            } else {
+                tfType.setValue(null);
+            }
+        });
+
+        cbRoom.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            tfDescription.setText("Cleaning room " + newValue.getNumber());
+        });
+
+        addValidations();
+        btnSave.disableProperty().bind(validator.invalidProperty());
+        ValidationUtils.showErrorsOnNode(validator, btnSave, btnSaveContainer);
     }
 }

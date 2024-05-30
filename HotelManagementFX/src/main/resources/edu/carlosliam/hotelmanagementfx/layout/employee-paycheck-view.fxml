@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.EmployeePaycheckController">
+<VBox id="mainContainer" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" spacing="10.0" stylesheets="@../css/modal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.EmployeePaycheckController">
     <children>
         <HBox prefWidth="200.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#close">
+                <Button id="close" mnemonicParsing="false" onAction="#close">
                     <graphic>
                         <FontIcon iconLiteral="mdi2w-window-close" iconSize="14" />
                     </graphic>
@@ -33,7 +33,7 @@
             <DatePicker fx:id="dpEndDate" promptText="End date" HBox.hgrow="ALWAYS" />
             </children>
         </HBox>
-        <Button mnemonicParsing="false" onAction="#generatePaychecks" text="Generate paychecks">
+        <Button mnemonicParsing="false" onAction="#generatePaychecks" styleClass="button-action" text="Generate paychecks">
             <graphic>
                 <FontIcon iconLiteral="mdi2c-content-save" iconSize="15" />
             </graphic>

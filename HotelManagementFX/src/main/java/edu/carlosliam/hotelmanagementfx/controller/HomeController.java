@@ -26,16 +26,6 @@ public class HomeController {
     }
 
     @FXML
-    void openInfo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void openSettings(ActionEvent event) {
-
-    }
-
-    @FXML
     void close() {
         Platform.exit();
     }

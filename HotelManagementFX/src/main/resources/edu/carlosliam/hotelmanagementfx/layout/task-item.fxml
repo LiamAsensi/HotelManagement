@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <fx:root type="javafx.scene.control.ListCell" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <graphic>
@@ -25,17 +26,11 @@
                      </children>
                   </VBox>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblStatus" text="Status" />
-                  <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblEmployeeName" text="Employee's Name" />
+                  <Label fx:id="lblEmployeeName" text="Unassigned" />
                   <Region HBox.hgrow="ALWAYS" />
                   <Label fx:id="lblDate" text="Date" />
-                  <Region />
-                  <Label fx:id="lblPriority" text="Priority">
-                     <HBox.margin>
-                        <Insets left="30.0" />
-                     </HBox.margin>
-                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <FontIcon fx:id="fiPriority" iconLiteral="mdi2f-flag" iconSize="24" />
                </children>
                <HBox.margin>
                   <Insets />

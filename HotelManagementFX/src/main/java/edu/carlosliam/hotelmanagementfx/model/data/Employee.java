@@ -26,6 +26,8 @@ public class Employee {
         put("electricidad", "Electrician");
         put("fontaneria", "Plumber");
         put("carpinteria", "Carpenter");
+        put("pintura", "Painter");
+        put("construccion", "Constructor");
     }};
 
     public static HashMap<ProfessionFilter, String> professionsEnum = new HashMap<>() {{
@@ -34,6 +36,8 @@ public class Employee {
         put(ProfessionFilter.ELECTRICIAN, "electricidad");
         put(ProfessionFilter.PLUMBER, "fontaneria");
         put(ProfessionFilter.CARPENTER, "carpinteria");
+        put(ProfessionFilter.PAINTER, "pintura");
+        put(ProfessionFilter.CONSTRUCTOR, "construccion");
     }};
 
     public Employee(String id, String dni, String name, String surnames, String profession, String password, String email) {

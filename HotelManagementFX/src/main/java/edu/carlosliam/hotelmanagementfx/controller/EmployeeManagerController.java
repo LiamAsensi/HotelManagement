@@ -9,6 +9,8 @@ import edu.carlosliam.hotelmanagementfx.service.GetEmployeesScheduled;
 import edu.carlosliam.hotelmanagementfx.utils.EmployeeReportPdfCreator;
 import edu.carlosliam.hotelmanagementfx.utils.MessageUtils;
 import edu.carlosliam.hotelmanagementfx.utils.ModalUtils;
+import edu.carlosliam.hotelmanagementfx.utils.NotificationUtils;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -116,7 +118,7 @@ public class EmployeeManagerController implements Initializable {
     // This method is used to load the scheduled service
     private void loadScheduledService() {
         getEmployeesScheduled = new GetEmployeesScheduled();
-        getEmployeesScheduled.setPeriod(Duration.seconds(5));
+        getEmployeesScheduled.setPeriod(Duration.minutes(1));
         getEmployeesScheduled.setOnSucceeded(e -> {
             Employee selectedItem = lvEmployees.getSelectionModel().getSelectedItem();
 
@@ -155,6 +157,16 @@ public class EmployeeManagerController implements Initializable {
                         (observable, oldValue, newValue) -> disableContextButtons(newValue == null)
                 );
 
+        lvEmployees.setOnMouseClicked(e -> {
+            if (e.getClickCount() == 2) {
+                try {
+                    editEmployee();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }
+        });
+
         root.setOnMouseClicked(e -> lvEmployees.getSelectionModel().clearSelection());
 
         loadProfessionsCheckbox();
@@ -179,6 +191,11 @@ public class EmployeeManagerController implements Initializable {
                 if (!deleteEmployee.getValue().isError()) {
                     forceUpdateOfItems();
                     disableContextButtons(true);
+                    Platform.runLater(() ->
+                        NotificationUtils.showNotificationSuccess("Employee fired",
+                            "The employee has been fired successfully"
+                        )
+                    );
                 } else {
                     MessageUtils.showError("Error firing employee",
                             deleteEmployee.getValue().getErrorMessage());
@@ -234,6 +251,8 @@ public class EmployeeManagerController implements Initializable {
         MANAGER,
         ELECTRICIAN,
         PLUMBER,
-        CARPENTER
+        CARPENTER,
+        PAINTER,
+        CONSTRUCTOR
     }
 }
