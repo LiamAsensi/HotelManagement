@@ -15,3 +15,8 @@
 #control-buttons .button .ikonli-font-icon {
     -fx-icon-color: #404040;
 }
+
+.animated-gradient {
+    -gradient-base: #f64888 ;
+    -fx-text-fill: linear-gradient(to right, -gradient-base, #fc3d5b);
+}

@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class EmployeeWithAssignment {
     public static HashMap<String, String> professions;
+    public static HashMap<String, String> professionsInverse;
     static {
         professions = new HashMap<>();
         professions.put("electricidad", "Electricity");
@@ -13,6 +14,15 @@ public class EmployeeWithAssignment {
         professions.put("carpinteria", "Carpentry");
         professions.put("pintura", "Painting");
         professions.put("construccion", "Construction");
+
+        professionsInverse = new HashMap<>();
+        professionsInverse.put("Electricity", "electricidad");
+        professionsInverse.put("Cleaning", "limpieza");
+        professionsInverse.put("Management", "gestion");
+        professionsInverse.put("Plumber", "fontaneria");
+        professionsInverse.put("Carpentry", "carpinteria");
+        professionsInverse.put("Painting", "pintura");
+        professionsInverse.put("Construction", "construccion");
     }
     private Assignment assignment;
     private Employee employee;
