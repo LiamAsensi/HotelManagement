@@ -13,6 +13,7 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <?import edu.carlosliam.hotelmanagementfx.controller.HMToolBar?>
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #FFF5E6;" stylesheets="@../css/manager.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.TaskManagerController">
    <top>
       <HMToolBar fx:id="toolbar"/>
@@ -23,16 +24,16 @@
             <Insets bottom="50.0" left="40.0" right="40.0" top="30.0" />
          </BorderPane.margin>
          <children>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Task Manager">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" styleClass="transparent" onAction="#addTask">
+                  <Button mnemonicParsing="false" onAction="#addTask" styleClass="transparent">
                      <graphic>
-                        <FontIcon iconLiteral="mdi2p-plus-box" iconSize="32"/>
+                        <FontIcon iconLiteral="mdi2p-plus-box" iconSize="32" />
                      </graphic>
                   </Button>
                </children>
@@ -50,14 +51,16 @@
                               </Label>
                               <FontIcon iconLiteral="mdi2a-account-hard-hat" iconSize="20" />
                               <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                              <ChoiceBox prefWidth="150.0" />
-                              <ChoiceBox prefWidth="150.0" />
+                              <ChoiceBox fx:id="cbType" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <ListView fx:id="lvTasks" prefHeight="507.0" prefWidth="765.0" VBox.vgrow="ALWAYS" />
                      </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
                   </VBox>
-                  <VBox id="context-buttons" alignment="CENTER" prefHeight="567.0" prefWidth="195.0" spacing="30.0">
+                  <VBox id="context-buttons" alignment="CENTER" prefHeight="567.0" prefWidth="300.0" spacing="30.0">
                      <children>
                         <Button fx:id="btnEditTask" mnemonicParsing="false">
                            <graphic>
@@ -76,7 +79,7 @@
                               </VBox>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnDeleteTask" id="fire-button" mnemonicParsing="false">
+                        <Button id="fire-button" fx:id="btnDeleteTask" mnemonicParsing="false">
                            <graphic>
                               <VBox alignment="CENTER" prefWidth="150.0" spacing="5.0">
                                  <children>

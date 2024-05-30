@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox id="mainContainer" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" stylesheets="@../css/modal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.EmployeeNewController">
+<VBox id="mainContainer" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" spacing="10.0" stylesheets="@../css/modal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.carlosliam.hotelmanagementfx.controller.EmployeeNewController">
    <children>
       <HBox prefWidth="200.0">
          <children>
@@ -41,10 +41,10 @@
          </children>
       </HBox>
       <TextField fx:id="tfEmail" promptText="Employee's email" />
-      <ChoiceBox fx:id="cbProfession" prefWidth="150.0" />
+      <ChoiceBox fx:id="cbProfession" prefWidth="500.0" />
       <HBox fx:id="btnSaveContainer" alignment="CENTER">
          <children>
-            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveEmployee" text="Save">
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveEmployee" styleClass="button-action" text="Save">
                <graphic>
                   <FontIcon iconLiteral="mdi2c-content-save" iconSize="15" />
                </graphic>

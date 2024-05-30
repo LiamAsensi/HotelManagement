@@ -27,8 +27,6 @@
                   <Region HBox.hgrow="ALWAYS" />
                   <Label fx:id="lblEmail" text="email@employee.com" />
                   <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblStatus" text="Status" />
-                  <Region HBox.hgrow="ALWAYS" />
                   <Label fx:id="lblDni" text="12345678A" />
                </children>
                <HBox.margin>
