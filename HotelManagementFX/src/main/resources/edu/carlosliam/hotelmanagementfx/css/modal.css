@@ -6,9 +6,82 @@
 
 #close {
     -fx-background-color: transparent;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
     -fx-cursor: hand;
 }
 
 #close .ikonli-font-icon {
     -fx-icon-color: #BF2222;
+}
+
+#close:hover {
+    -fx-background-color: #BF2222;
+}
+
+#close:hover .ikonli-font-icon {
+    -fx-icon-color: #FFF5E6;
+}
+
+.button-action {
+    -fx-background-color: #F6DFCF;
+    -fx-background-radius: 20px;
+    -fx-border-color: #B0B0B0;
+    -fx-border-radius: 20px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 1, 0.3, 0.0, 2.0);
+    -fx-cursor: hand
+}
+
+.button-action:hover {
+    -fx-background-color: #F0C4A5;
+}
+
+.text-field {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+    -fx-border-color: #B0B0B0;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+}
+
+.choice-box {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-color: #B0B0B0;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+}
+
+.date-picker {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-color: #B0B0B0;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+}
+
+.check-box .box {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-color: #B0B0B0;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
 }

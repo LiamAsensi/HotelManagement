@@ -41,15 +41,6 @@
     -fx-icon-color: #FFF5E6;
 }
 
-.button.transparent {
-    -fx-background-color: transparent;
-    -fx-cursor: hand;
-}
-
-.button.transparent:hover .ikonli-font-icon {
-    -fx-icon-color: #000000;
-}
-
 .list-view, .choice-box {
     -fx-background-color: #F6DFCF;
     -fx-background-radius: 10px;
@@ -104,4 +95,14 @@
 
 .list-view .scroll-bar:vertical {
     -fx-padding: 0 7 0 0;
+}
+
+.button.transparent {
+    -fx-background-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-cursor: hand;
+}
+
+.button.transparent:hover .ikonli-font-icon {
+    -fx-icon-color: #000000;
 }
