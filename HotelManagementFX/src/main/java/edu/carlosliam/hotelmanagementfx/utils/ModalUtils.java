@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.ColorAdjust;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -23,6 +24,7 @@ public class ModalUtils {
 
         FXMLLoader fxmlLoader = new FXMLLoader(HotelManagementApplication.class.getResource(layout));
         Scene scene = new Scene(fxmlLoader.load());
+        scene.setFill(Color.TRANSPARENT);
         modalStage.setScene(scene);
 
         HotelManagementApplication.primaryStage.getScene().getRoot().setEffect(new ColorAdjust(0, -0.5, -0.5, 0));
